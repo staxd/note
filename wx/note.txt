@@ -1,0 +1,152 @@
+
+————————————————————————————————————————————————————————————————————————————————————————
+一、小程序获取系统时间
+
+    //util.js
+
+    function formatTime(date) {
+      var year = date.getFullYear()
+      var month = date.getMonth() + 1
+      var day = date.getDate()
+
+      var hour = date.getHours()
+      var minute = date.getMinutes()
+      var second = date.getSeconds()
+
+
+      return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+    }
+
+    function formatNumber(n) {
+      n = n.toString()
+      return n[1] ? n : '0' + n
+    }
+
+    module.exports = {
+      formatTime: formatTime
+    }
+
+    //index.wxml
+    const util = require('../../../utils/util.js')
+    var time = util.formatTime(new Date());
+          var year = time.substring(0, 4) //截取字符串
+
+
+
+
+————————————————————————————————————————————————————————————————————————————————————————
+二、页面返回
+
+    var pages = getCurrentPages(); //获取当前页面js里面的pages里的所有信息。
+    var currPage = pages[pages.length - 1];   //当前页面
+    var prevPage = pages[pages.length - 2];  //-2上一个页面，-3是上上个页面以此类推。
+
+    //直接调用上一个页面对象的setData()方法，把数据存到上一个页面中去
+    prevPage.setData({
+       patientList
+    });
+
+    //上一个页面内执行setData操作，将我们想要的信息保存住。当我们返回去的时候，页面已经处理完毕。
+    //最后就是返回上一个页面。
+    wx.navigateBack({
+       delta: 1 // 返回上一级页面。
+    })
+
+
+
+
+————————————————————————————————————————————————————————————————————————————————————————
+三、JOSON
+
+    JSON.stringify(archiveList)//对象json转换成字符串json
+    JSON.parse(archiveList)//字符串json转换成对象json
+
+
+
+
+
+————————————————————————————————————————————————————————————————————————————————————————
+四、添加元素
+    （一）push()，concat()方法的区别
+      1./*push()方法*/
+        var array=[1,2,3,4,5];
+
+        console.log(array);   //[1, 2, 3, 4, 5]
+
+        array.push(6);        //一个参数
+        console.log(array);   //[1, 2, 3, 4, 5, 6]
+
+        array.push(6,7);      //两个参数
+        console.log(array);   //[1, 2, 3, 4, 5, 6, 7]
+
+        array.push([6,7]);    //参数为数组
+        console.log(array);   //[1, 2, 3, 4, 5, 6, Array(2)]
+
+
+      2./*concat()方法*/
+        var array=[1,2,3,4,5];
+
+        console.log(array);   //[1, 2, 3, 4, 5]
+
+        var array2=array.concat(6);    //一个参数
+        console.log(array);    //[1, 2, 3, 4, 5]
+        console.log(array2);   //[1, 2, 3, 4, 5, 6]
+
+        var array2=array.concat(6,7);    //两个参数
+        console.log(array);    //[1, 2, 3, 4, 5]
+        console.log(array2);   //[1, 2, 3, 4, 5, 6，7]
+
+        var array2=array.concat([6,7]);    //参数为数组
+        console.log(array);    //[1, 2, 3, 4, 5]
+        console.log(array2);   //[1, 2, 3, 4, 5, 6, 7]
+
+
+
+
+    （二）几种向数组中添加元素方法的性能比较 （越往下越慢）
+
+      1.向数组结尾添加元素
+        arry.push()
+
+        var arr = [1,2,3,4,5];
+        var arr2 = [];
+
+        arr.push(6);    //方法1
+        arr[arr.length] = 6;    //方法2
+        arr2 = arr.concat([6]);  //方法3
+
+      2.向数组的头部添加元素
+        var arr = [1,2,3,4,5];
+
+        arr.unshift(0); //方法1
+        [0].concat(arr); //方法2
+
+      3.向数组中间添加元素
+        myArray.splice(2,0,'肾虚少年');
+        console.log('用splice在数组指定位置插入元素：',myArray);
+
+      4.汇总
+        unshift：将参数添加到原数组开头，并返回数组的长度
+        pop：删除原数组最后一项，并返回删除元素的值；如果数组为空则返回undefined
+        push：将参数添加到原数组末尾，并返回数组的长度
+        concat：返回一个新数组，是将参数添加到原数组中构成的
+        splice(start,deleteCount,val1,val2,...)：从start位置开始删除deleteCount项，并从该位置起插入val1,val2,...
+        reverse：将数组反序
+        sort(orderfunction)：按指定的参数对数组进行排序
+        slice(start,end)：返回从原数组中指定开始下标到结束下标之间的项组成的新数组
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
