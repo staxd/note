@@ -137,12 +137,22 @@
 
 
 
+————————————————————————————————————————————————————————————————————————————————————————
+五、页面传值之 json报错
 
 
+        //a页面
+         var my = encodeURIComponent(JSON.stringify(res));
+        wx.navigateTo({
+          url:'../ticketmydetail/ticketmydetail?my=' + my
+        })
 
 
-
-
+        //b页面
+        var my = decodeURIComponent(options.my);
+        this.setData({
+          myDetail : JSON.parse(my)
+        })
 
 
 
