@@ -49,3 +49,134 @@
 		    border-left: 5px solid transparent;
 		    border-right: 5px solid transparent;
 		}
+
+————————————————————————————————————————————————————————————————————————————————————————
+四、优化数字
+function correctNumberInput(val) {
+    let lastChar = val[val.length - 1] === '.' ? '.' : ''
+    return (isNaN(parseFloat(val)) ? '' : parseInt(Math.round(parseFloat(val) * 100)) / 100) + lastChar
+}
+
+————————————————————————————————————————————————————————————————————————————————————————
+五、取反操作
+
+var key;
+        $(".select_top img").on("click",function(){
+            
+            if(key){
+                console.log("aa")
+                key = false
+            }else{
+                console.log("bbb")
+                key = true
+            }
+            
+        })
+————————————————————————————————————————————————————————————————————————————————————————
+六、禁止滚动条滚动和移除禁止
+//禁止滚动条滚动
+function unScroll() {
+    var top = $(document).scrollTop();
+    $(document).on('scroll.unable',function (e) {
+        $(document).scrollTop(top);
+    })
+}
+
+//移除禁止
+function removeUnScroll() {
+    $(document).unbind("scroll.unable");
+}
+
+//隐藏页面滚动条
+$('body').parent().css('overflow-y','hidden');
+————————————————————————————————————————————————————————————————————————————————————————
+七、侧边栏 鼠标经过时显示
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title> 页面名称 </title>
+<style type="text/css">
+#maik {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0px;
+    height: 400px;
+    padding-left: 4px;
+    background: #CCFFFF;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+#maik:hover {
+    width: 200px;
+}
+</style>
+</head>
+<body>
+<div id="maik">
+    <p>001</p>
+    <p>002</p>
+    <p>003</p>
+    <p>004</p>
+    <p>005</p>
+    <p>006</p>
+</div>
+
+</body>
+</html>
+————————————————————————————————————————————————————————————————————————————————————————
+八、定时器setTimeout()、setInterval()
+
+//	每隔两秒执行一次alert
+var i = 1;
+var timer = setInterval(function() { 
+  alert(i++);
+}, 2000); 
+
+//两秒之后执行alert
+var i = 1;
+var timer = setTimeout(function() { 
+  alert(i++);
+}, 2000);
+
+
+clearTimeout(timer);//命名函数可不用清楚
+clearInterval(timer);
+————————————————————————————————————————————————————————————————————————————————————————
+九、本地缓存
+localStorage 生命周期是永久，这意味着除非用户显示在浏览器提供的UI上清除localStorage信息，否则这些信息将永远存在。存放数据大小为一般为5MB,而且它仅在客户端（即浏览器）中保存，不参与和服务器的通信。
+sessionStorage 仅在当前会话下有效，关闭页面或浏览器后被清除。存放数据大小为一般为5MB,而且它仅在客户端（即浏览器）中保存，不参与和服务器的通信。源生接口可以接受，亦可再次封装来对Object和Array有更好的支持。
+
+	localStorage.setItem("key","value");//以“key”为名称存储一个值“value”
+
+    localStorage.getItem("key");//获取名称为“key”的值
+
+    localStorage.removeItem("key");//删除名称为“key”的信息。
+
+    localStorage.clear();​//清空localStorage中所有信息
+
+————————————————————————————————————————————————————————————————————————————————————————
+十、each
+	$.each(data.data,function(i,obj){
+	    // console.log(data.data[i].userName);
+	    var commentList = getCommentList(data.data[i]);
+	    $("#postDetails-body-box").append(commentList);
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
