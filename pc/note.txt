@@ -15,3 +15,37 @@
 	通配符							 0
 
 ————————————————————————————————————————————————————————————————————————————————————————
+三、三角形
+
+	1.箭头向右:
+		.test-border {
+		    width: 0;
+		    height: 0;
+		    border-top: 5px solid transparent;
+		    border-bottom: 5px solid transparent;
+		    border-left: 9px solid #c1c1c1;
+		}
+	2.箭头向左:
+		.test-border {
+		    width: 0;
+		    height: 0;
+		    border-top: 5px solid transparent;
+		    border-bottom: 5px solid transparent;
+		    border-right: 9px solid #c1c1c1;
+		}
+	3.箭头向上:
+		.test-border {
+		    width: 0;
+		    height: 0;
+		    border-bottom: 9px solid #c1c1c1;
+		    border-left: 5px solid transparent;
+		    border-right: 5px solid transparent;
+		}
+	4.箭头向下:
+		.test-border {
+		    width: 0;
+		    height: 0;
+		    border-top: 9px solid #c1c1c1;
+		    border-left: 5px solid transparent;
+		    border-right: 5px solid transparent;
+		}
