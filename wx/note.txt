@@ -153,10 +153,43 @@
         this.setData({
           myDetail : JSON.parse(my)
         })
+————————————————————————————————————————————————————————————————————————————————————————
+六、单选按钮
 
+<view class='info_top'>
+  <view data-id="{{index}}" bindtap='infoSelect' wx:for="{{infoTitile}}" wx:key="*this">{{item.title}}
+  <view class="border {{item.select?'bg':''}}"></view>
+  </view>
+</view>
 
+//js
+infoTitile:[{
+      background:"#fff",
+      title:"全部",
+      color:"#333",
+      select: true
+    }, {
+        background: "#87aa66",
+        title: "I 级",
+        color: "#fff",
+        select: false
 
+      }]
 
-
+infoSelect(e) {
+    // console.log(e.currentTarget.dataset.id)
+    var id = e.currentTarget.dataset.id
+    var infoTitile = this.data.infoTitile
+    for (let i in infoTitile) {
+      if (i == id) {
+        infoTitile[i].select = true
+      } else {
+        infoTitile[i].select = false
+      }
+    }
+    this.setData({
+      infoTitile
+    })
+  },
 
 
