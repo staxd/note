@@ -1,0 +1,172 @@
+生产指示单 未发放 --不能做投坯单 不能做工序完工单 缴库单
+
+
+	已发放 -- 能做投坯单 没做投坯单就不能做工序完工单 不能缴库单
+	已发放已做投坯单 -- 不能改成未发放
+
+完工     必须要已发放状态
+
+	完工变反完工 1.已经有投坯单了 ，点反完工状态变为生产中
+		   2.没有投坯单 ，点反完工状态变为已发放
+
+本道工序没做转移 下道工序不能做完工 下道工序完工的数量受上道工序的转移总数量限制的
+
+
+productionStatus	生产状态【0:未发放 1:已发放 2:生产中 3:已完工】
+
+//简称代替名称
+if(item.shortName!=""){
+          item["name"]=item.shortName
+        }
+
+// var test={
+//   b:{name:12},
+//   c:{name:12}
+// }
+
+
+
+// test[b].name=222
+
+
+
+
+
+<tr class="single-to-samples ">
+                  <td style="width:140px;" id="raw_material_detail_num">16687228899</td>
+                  <td id="raw_material_detail_name">123</td>
+                  <td class="choose-color" data-value="1">
+                    <div class="form-control choose-text hint--top" id="materialColorId" data-id="" data-index="0" aria-label="选择颜色"><p>选择颜色</p></div>
+                    <div class="choose-color-div" style="display: none;float:right">
+                      <!--<div>-->
+                        <!--<input placeholder="请输入色名/色号" id="search-color">-->
+                        <!--<a class="add-color">+新增颜色</a>-->
+                      <!--</div>-->
+                      <ul class="choose-color-box" data-id="hhhh">
+
+                      </ul>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="choose-and-search-g choose-search-plugin-warehouse" style="width: 150px;position: relative;margin-top: 5px">
+                      <div class="choose-and-search-inner" id="select_warehouse" style="height: 36px;padding: 10px 16px;line-height: 16px;">选择仓库</div>
+                      <input type="hidden" id="result_val" class="result_warehouse" name="supplier" value="">
+                      <div class="choose-and-search-result " id="click_box_result" style="display: none;">
+                        <div class="drop-down-search" style="padding: 12px">
+                          <input type="text" id="search_input" placeholder="搜索仓库">
+                          <img id="loading_img" src="/images/loading.gif">
+                        </div>
+                        <ul id="list_ul">
+                        </ul>
+                      </div>
+                      <i class="business-caret"></i>
+                    </div>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control check-total" data-focus="check-total" disabled="disabled" style="width:120px;" id="raw_material_detail_send">
+                  </td>
+                  <td>
+                    <input type="text" class="form-control check-total" data-focus="check-total" disabled="disabled" style="width:120px;" id="raw_material_detail_loss">
+                  </td>
+                  <td>
+                    <input type="text" class="form-control check-total" data-focus="check-total" disabled="disabled" style="width:120px;" id="raw_material_detail_loss_rate">
+                  </td>
+                  <td>
+                    <input type="text" class="form-control check-total" data-focus="check-total" style="width:120px;" id="raw_material_detail_shot">
+                  </td>
+                  <td id="raw_material_detail_unit">米</td>
+                  <td id="raw_material_detail_process">
+                    <div class="production-object change-margin-top">
+                      <div class="choose-and-search-g">
+                        <div class="choose-and-search-inner" id="process-select">选择工序</div>
+                        <input type="hidden" id="process_id" name="companyAccountId" value="">
+                        <div class="choose-and-search-result" id="result_process_list_div" style="display: none;padding-top: 0;width: 120px;">
+                          <ul id="result_process_list" style="overflow-Y: scroll;max-height: 200px">
+  <li value="" data-name="选择加工工序">选择加工工序
+  </li>
+</ul>
+                        </div>
+                        <i class="business-caret"></i>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <!-- <div class="edit_box">
+                      <div class="operation " style="min-width: 65px;" id="save_sample">
+                        <div class="img_icon hint--top-right" aria-label="保存">保存
+                        </div>
+                      </div>
+                    </div> -->
+                    <div class="edit_box">
+                      <div class="operation " style="min-width: 65px;" id="addSample">
+                        <div class="img_icon hint--top-right" aria-label="添加">添加
+                        </div>
+                      </div>
+                    </div>
+
+                  </td>
+                </tr>
+
+
+
+
+
+if(process_setting_arr.length==0){
+                g_msgAlert("请先在工序设定里添加投坯工序，再添加应发坯量！",function(){
+                  that.val("")
+                  return
+
+                })
+                return
+              }
+              if(that.parents("td").siblings().children(".change-margin-top").children(".choose-and-search-g").children("#process-select").text()=="选择工序"){
+                g_msgAlert("请先选择工序，再添加应发坯量！",function(){
+                  that.val("")
+                  that.parents("td").siblings().children(".raw_material_detail_loss").val(0)
+                  that.parents("td").siblings().children(".raw_material_detail_loss_rate").val(0)
+                  that.parents("td").siblings().children(".raw_material_detail_shot").val(0)
+
+                  return
+
+                })
+              }
+
+
+
+  // console.log(parseInt(thatTr.eq(0).children('td').children('.raw_material_detail_send').val()))
+                  // thatTr.eq(0).children('td').children('.raw_material_detail_send').val()
+                //    sendNum+= parseInt(thatTr.eq(r).children('td').children('.raw_material_detail_send').val())
+                //   }
+                //   console.log(sendNum/2,sendableNum+sendNum)
+                //  if((sendableNum+sendNum)>processNum){
+                //    g_msgAlert('请注意，应发坯量不能大于加工数量！',function(){
+
+                //     that.val(processNum-sendNum)
+                // qnmlgb(that,processNum-sendNum,wastageNum,wastageRate,shotNum)
+                    
+                //   timetimeSave(colorThat)
+                //   })
+                  
+
+                //   return
+                //  }else{
+                // qnmlgb(that,sendableNum,wastageNum,wastageRate,shotNum)
+
+
+
+
+
+
+
+
+
+生产指示单  应投坯量 = 应发坯量/（1-损耗率）
+			//投坯工序
+                process_setting_arr.forEach(function (i) {
+                          wastageRate+=parseFloat(i.wastageRate)
+                })
+
+
+
+
+

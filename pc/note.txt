@@ -168,14 +168,29 @@ sessionStorage 仅在当前会话下有效，关闭页面或浏览器后被清�
     });
 
 
+十一、固定表头
+ //固定表头
+   $('.scroll_table').scroll(function(){
+    if($(this).attr('style').indexOf('overflow')>-1){
+      var scrollTop = this.scrollTop;
+      $(this).find('thead').attr('style','transform: translateY(' + scrollTop + 'px);background-color: #fff;position:relative;z-index:200;')
+    };
+  });
+
+
+十二
+
+//判断item是否存在key
+if(item.hasOwnProperty(shortName)){}
+//判断对象为空
+$.isEmptyObject({})//true
 
 
 
 
-
-
-
-
+var arrList = ['a','b','c','d'];  
+arrList.splice(jQuery.inArray('b',arrList),1); 
+alert(arrList); 
 
 
 
