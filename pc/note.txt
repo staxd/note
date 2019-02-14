@@ -192,6 +192,35 @@ var arrList = ['a','b','c','d'];
 arrList.splice(jQuery.inArray('b',arrList),1); 
 alert(arrList); 
 
+十三、数据控制
+ var _this = $(this)
+  if(totalLastProcessTransferPackageNum>0){
 
+
+      var key = 0
+      for(let i=0;i<$("#selectedColor").children("tr").length;i++){
+          if(i!=_this.parents("tr").index()){
+            if($(".completeNum").eq(i).val()!=""){
+              key+=Number($(".completeNum").eq(i).val())
+            }
+          }
+        }
+        if((key+Number(_this.val()))>(putNum+totalLastProcessTransferPackageNum)){
+          g_msgAlert('最大可完工数为'+(putNum+totalLastProcessTransferPackageNum),function(){
+          _this.val((putNum+totalLastProcessTransferPackageNum)-key)
+          return
+          })
+          return
+        }
+  }else{
+  if(Number(_this.val())>Number(_this.attr('data-num'))){
+    g_msgAlert('投坯数量为'+Number(_this.attr('data-num'))+',完工匹数不能大于投坯匹数！',function(){
+    _this.val(Number(_this.attr('data-num')))
+    return
+    })
+    return
+  }
+  }
+})
 
 

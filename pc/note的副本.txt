@@ -14,6 +14,25 @@
 
 productionStatus	生产状态【0:未发放 1:已发放 2:生产中 3:已完工】
 
+
+
+
+
+
+
+ }
+        warehouse.quantity = i.quantity
+        warehouse.packageNum = i.packageNum
+        stockNum_color[pos]=warehouse
+
+
+
+
+
+
+
+
+
 //简称代替名称
 if(item.shortName!=""){
           item["name"]=item.shortName
@@ -168,5 +187,6 @@ if(process_setting_arr.length==0){
 
 
 
-
-
+ location.reload();刷新页面
+localStorage.setItem
+localStorage.getItem
