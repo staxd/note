@@ -1,0 +1,210 @@
+<div id="app">
+    <div>{{message}}</div>
+</div>
+<script type="text/javascript">
+	new Vue({
+    el:'#app',
+    data: {
+        message:'hello vue.js.'
+    }
+	});
+</script>
+
+//这个例子在浏览器解析时会输出hello vue.js。
+
+
+
+Vue对象里面有四个常用的属性，el、data、methods、components。
+
+el:声明vuejs管理的边界，类似于angular的ng-app，把数据绑定给谁。 上面的例子中将数据绑定给了#app。
+data:专门存储一些数据的属性，数据一定是对象格式。 上面的例子中给message赋值hello vue.js!
+methods:专门放置我们的事件的方法
+components:创建组件
+
+
+<div id="app">
+  <p>{{ message }}</p>
+  <input v-model="message">
+</div>
+
+new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!'
+  }
+})
+
+//实现双向数据绑定。
+
+
+实例
+
+1.v-if:通过判断加载内容，若为真加载，为假时删除元素
+
+	<div id="app">
+	  <p v-if="seen">Now you see me</p>
+	</div>
+
+	new Vue({
+	  el: '#app',
+	  data: {
+	    seen: true
+	  }
+	})
+
+2.v-for:控制html元素的循环，实现数据列表
+
+	<div id="app">
+	  <ol>
+	    <li v-for="i in todos">
+	      {{ i.text }}
+	    </li>
+	  </ol>
+	</div>
+
+	new Vue({
+	  el: '#app',
+	  data: {
+	    todos: [
+	      { text: 'Learn JavaScript' },
+	      { text: 'Learn Vue' },
+	      { text: 'Build something awesome' }
+	    ]
+	  }
+	})
+
+	//Learn JavaScript
+	//Learn Vue
+	//Build something awesome
+
+3.v-show:通过判断加载内容，若为真显示元素，为假时隐藏元素display：none
+
+	<div id="app">
+	  <p v-show="seen">Now you see me</p>
+	</div>
+
+	new Vue({
+	  el: '#app',
+	  data: {
+	    seen: true
+	  }
+	})
+
+4.v-else:元素必须紧跟在v-if或v-show元素的后面——否则它不能被识别。
+
+	<div v-if="a"></div>  ||   <div v-show="a"></div>
+	<div v-else></div>
+
+5.v-bind:给页面中html属性进行绑定，使用缩写“:”，
+
+	<img v-bind:src="img" />                  ===>     <img :src="img" />
+	<div v-bind:style="styles">style</div>    ===>     <div :style="styles">style</div>
+
+	data:{ 
+	    img:"img/logo.png",
+	    styles:{color:'red',fontSize:'30px'}
+	}
+
+6.v-on:对页面中的事件进行绑定,使用方法 v-on:click="函数名称",函数就是存放在methods属性里的方法名，例如
+
+	<button v-on:click="oclick()">点击</button>   ===>   <button @click="oclick()">点击</button>
+
+	methods:{ 
+	    oclick:function(){ 
+	        alert(1); 
+	    } 
+	}
+
+7.$event:事件对象
+
+	<div @click="show($event)">点我</div>   ===>    <div @click="show">点我</div>
+
+	methods:{                              ===>         methods:{
+	    show(ev){											show(){
+	      alert(ev.clientX)										alert(event.clientX)
+	    }													}
+	}													}
+
+
+
+8.stop:阻止事件冒泡
+
+	<div @click.stop="show()">点我</div>
+
+9.prevent:阻止默认事件
+
+	<div @click.prevent="show()">点我</div>
+
+10.self:当事件在该元素本身触发时触发回调 //跳过冒泡事件和捕获事件
+
+	<div @click.self="show()">点我</div>
+
+11.capture:添加事件时使用事件捕获模式
+
+	<div @click.capture="show()">点我</div>
+
+12.键盘事件:
+
+	//原声js：ev.keyCode (13回车)
+	//@keydown:任意键按下 @keyup:任意键抬起  
+	//方向键：.up:上 .down:下 .right:右 .left:左  .enter:回车 
+	//键码：.13:回车 
+
+	<div @keydown="get()">啦啦啦~</div>
+	<div @keyup.enter="get()">啦啦啦~</div>
+
+13.过滤器： 2.0中放弃了
+
+	<p>{{ jiexige|uppercase }}</p>
+	//uppercase 大写、 lowercase 小写、 capitalize 首字母大写、currency 参数:"￥" 钱币
+
+	//自定义
+	Vue.filter('uppercase', function(value) {
+      if (!value) { return ''}
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
