@@ -14,34 +14,17 @@
         }
         #obj1 {
             background: deeppink;
+            width: 100px;
+            height: 100px;
         }
-        #obj2 {
-            background: pink;
-        }
-        #obj3 {
-            background: hotpink;
-        }#obj4 {
-             background: #ff4225;
-         }
     </style>
     <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <script src=”https://unpkg.com/axios/dist/axios.min.js”></script>
 </head>
 <body>
 
 <div id="content">
-    <div id="obj1" v-on:click.capture="doc($event)">
-        obj1
-        <div id="obj2" v-on:click.capture="doc">
-            obj2
-            <div id="obj3" v-on:click="doc">
-                obj3
-                <div id="obj4" v-on:click="doc">
-                <p>{{ id|uppercase }}</p>
-            </div>
-            </div>
-        </div>
-    </div>
-
+    <div id="obj1" @click.capture="doc"></div>
 </div>
 <script type="text/javascript">
     Vue.filter('uppercase', function(value) {
@@ -57,8 +40,12 @@
         },
         methods: {
             doc: function (ev) {
-                this.id= ev;
-                console.log(this.id)
+                 axios({
+                       method:'get',
+                        url:'http://test.jinjiazy.com/ver100'
+                    }).then(function(res){
+                        console.log(res.data);
+                    });
             }
         }
     })
