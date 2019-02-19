@@ -222,5 +222,23 @@ alert(arrList);
   }
   }
 })
+//	不同编号无法选择
+  _select_the_samples.on('click', 'input[type=\"checkbox\"]', function(event) {
+    var _this = $(this);
+    var firSelect = _this.parents("tr").index()
+    var fir = Number(_this.attr("name"))
+    var trList = $('#select_the_samples').children('tr')
+    for(var i=0;i<trList.length;i++){
+      if(i!=firSelect){
+        if(trList.eq(i).find('.sale_sample').is(':checked')){
+          if(fir !=  Number(trList.eq(i).find('.sale_sample').attr("name"))){
+              
+              _this.prop('checked',false)
+              g_msgAlert("不同编号无法选择！")
+          }
+        }
 
+      }
+    }
+  });
 
