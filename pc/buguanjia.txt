@@ -190,3 +190,5 @@ if(process_setting_arr.length==0){
  location.reload();刷新页面
 localStorage.setItem
 localStorage.getItem
+
+新增收款单 加 jianyang大货

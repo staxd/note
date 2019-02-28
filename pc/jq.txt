@@ -222,7 +222,7 @@ alert(arrList);
   }
   }
 })
-//	不同编号无法选择
+十四、不同编号无法选择
   _select_the_samples.on('click', 'input[type=\"checkbox\"]', function(event) {
     var _this = $(this);
     var firSelect = _this.parents("tr").index()
@@ -241,4 +241,4 @@ alert(arrList);
       }
     }
   });
-
+十五

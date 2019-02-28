@@ -1,0 +1,73 @@
+<script src="jquery.min.js"></script>
+<script type="text/javascript" src=".js/handlebars.js"></script>  
+————————————————————————————————————————————————————————————————————————————————————————
+一、将对象数据渲染到页面上
+js代码
+//用jquery获取模板，后预编译模板
+var tpl_fn = Handlebars.compile($('#info_template').html());
+
+//模拟json数据
+var data = { name: "XXX", content: "this is Handlebars"};
+
+//匹配json内容,后输入模板至 <div id="info_box"></div>
+$('#info_box').html(tpl_fn(data));
+
+
+
+多次循环套用
+
+var html = ""
+
+html+=tpl_fn(item)
+
+$('#info_box').html(html);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+模板结构
+<script id="info_template" type="text/x-handlebars-template">  
+<div class="demo">  
+    <h1>{{name}}</h1>
+    <p>{{content}}</p>
+</div>
+</script> 
+
+Handlebars的if判断只能判断true和false，没办法进行这种a===10的逻辑判断。如''、undefined、null、0、[]等都会被识别为false
+
+因为if没法==逻辑判断，所以我们自定义 ifCond 来实现
+  Handlebars.registerHelper('ifCond', function(v1, operator, v2, options) {
+    if (operator) {
+      return v1 == v2 ? options.fn(this) : options.inverse(this);
+    } else {
+      return options.inverse(this);
+    }
+  });
+({{#ifCond type '==' 0}}我很帅{{/ifCond}}
+({{#ifCond type '==' 1}}更帅了{{/ifCond}}
+
+
+
+each遍历
+#模板
+{{#each selectPosObj}} 
+  <p>{{this.name}}:{{this.age}}</p> 
+{{else}}
+  <p>no data</p>
+{{/each}}
+
+#json
+[
+  {name: 'aaa', age: 23 },
+  {name: 'bbb', age: 55 }
+]
