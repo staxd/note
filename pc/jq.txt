@@ -241,4 +241,16 @@ alert(arrList);
       }
     }
   });
-十五
+十五、屏幕可视宽高
+calc(100vh）
+calc(100vw）
+
+
+
+sublime 格式化代码
+
+英文/原版  打开：PreFerences  --> Key Bindings -User  （如图1英文版）；
+中文/破解  打开：首选项  -->  按键绑定 - 用户     （如图2中文版）；
+
+    输    入： {"keys": ["alt+shift+q"], "command": "reindent"}
+执行单击事件     $('#make_search').trigger('click')
