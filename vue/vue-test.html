@@ -19,7 +19,7 @@
         }
     </style>
     <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
-    <script src=”https://unpkg.com/axios/dist/axios.min.js”></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
 
@@ -40,15 +40,40 @@
         },
         methods: {
             doc: function (ev) {
-                 axios({
-                       method:'get',
-                        url:'http://test.jinjiazy.com/ver100'
-                    }).then(function(res){
-                        console.log(res.data);
-                    });
+                var list_options = {
+                    type:'get',
+                    url:'deliveryList',
+                    data:{
+                        state:1,
+                        gageNo:1,
+                        pageSize:10
+                    }
+                }
+                var list_back = function(e){
+                        console.log(e)
+                }
+                sendAjax(list_options,list_back)
             }
         }
     })
+
+
+    function sendAjax(obj,callback){
+        var _defaults = {
+            // `url` 是请求的接口地址
+            url: obj.url || "",
+            // `method` 是请求的方法
+            method: obj.type || 'get', // 默认值
+            // 如果url不是绝对路径，那么会将baseURL和url拼接作为请求的接口地址
+            // 用来区分不同环境，建议使用
+            baseURL: 'http://47.74.191.135:8080/delivery/delivery/',
+            headers: { 'Content-Type':'application/json' },
+            data: obj.data || {}
+        }
+         _defaults.method = _defaults.method.toUpperCase()
+
+        axios(_defaults).then(callback).catch(function(e){alert("请求失败！")});;
+    }
 </script>
 </body>
 

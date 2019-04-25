@@ -2,30 +2,53 @@
 <html>
 
 <head>
-    <meta charset="UTF-8" />
-    <title>React 实例</title>
-    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
-    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
-    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+	<meta charset="UTF-8" />
+	<title>React ??</title>
+	<script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+	<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+	<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+	<script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
 </head>
 
 <body>
+	<div id="example"></div>
 
-    <div id="example"></div>
+	<script type="text/babel">
+class UserGist extends React.Component {
+  constructor(props) {
+      super(props);
+      this.state = {username: '', lastGistUrl: ''};
+  }
 
-
-
-    <script type="text/babel">
-	function HelloMessage(props) {
-		return <h1>Hello {props.name}!</h1>;
-	}
-
-	const element = <HelloMessage name="Runoob"/>;
-
-	ReactDOM.render(
-		element,
-		document.getElementById('example')
-	);
+ 
+  componentDidMount() {
+    this.serverRequest = $.get(this.props.source, function (result) {
+      var lastGist = result[0];
+      this.setState({
+        username: lastGist.owner.login,
+        lastGistUrl: lastGist.html_url
+      });
+    }.bind(this));
+  }
+ 
+  componentWillUnmount() {
+    this.serverRequest.abort();
+  }
+ 
+  render() {
+    return (
+      <div>
+        {this.state.username} ????? Gist ?????
+        <a href={this.state.lastGistUrl}>{this.state.lastGistUrl}</a>
+      </div>
+    );
+  }
+}
+ 
+ReactDOM.render(
+  <UserGist source="https://api.github.com/users/octocat/gists" />,
+  document.getElementById('example')
+);
 </script>
 
 </body>
