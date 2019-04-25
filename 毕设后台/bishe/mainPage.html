@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>人事管理系统</title>
+	<meta charset="utf-8" />
+	
+	<link rel="stylesheet" type="text/css" href="css/mainPage.css">
+</head>
+<body>
+	<div class="nav">
+		<div class="logo">
+			<img src="img/mainLogo.png" alt="logo.png" />
+			<span>人事管理系统</span>
+		</div>
+		<div class="positionNav"></div>
+		<div class="personalList">
+			<a class="avatar"><img src="img/mainLogo.png" alt="avatar.png" /></a>
+			<a class="systemMessage"><img src="img/message_icon.png" alt="systemMessage.png" /></a>
+			<a class="setUp"><img src="img/setUp.png" alt="setUp.png" /></a>
+		</div>
+	</div>
+	<div class="sideNav">
+		<div class="emptyBox"></div>
+		 <div class="sideNav-item " :class="[ types[index].class , { actived: type.selected }]" :class="type.class" v-for="(type, index) in types" v-on:click="choose(index)">{{type.type}}</div>
+	</div>
+	<div class="mainContent" id="viewDiv">
+	</div>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript" src="js/mainPage.js"></script>
+</body>
+</html>

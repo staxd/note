@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>添加动作</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="css/addAction.css">
+	<link rel="stylesheet" href="javascript/kindeditor/themes/default/default.css" />
+    <link rel="stylesheet" href="javascript/kindeditor/plugins/code/prettify.css" />
+    <script charset="utf-8" type="text/javascript" src="javascript/jquery-3.3.1.min.js"></script>
+    <script charset="utf-8" type="text/javascript" src="javascript/kindeditor/kindeditor-all-min.js"></script>
+    <script charset="utf-8" type="text/javascript" src="javascript/kindeditor/lang/zh-CN.js"></script>
+    <script charset="utf-8" type="text/javascript" src="javascript/kindeditor/plugins/code/prettify.js"></script>
+
+</head>
+<body>
+	<div class="addAction-page" id="content">
+		<div class="addAction-box">
+			<p>添加动作</p>
+			<div class="message-item">
+				<span>动作名称</span>
+				<input type="text" name="">
+			</div>
+			<div class="message-item">
+				<span>动作状态</span>
+				<select>
+					<option>启用</option>
+				</select>
+			</div>
+			<div class="message-item">
+				<span>使用器械</span>
+				<input type="text" name="">
+			</div>
+			<div class="message-item video-action">
+				<span>动作视频</span>
+				<div class="uploadVideo">
+					<span class="uploadVideo_btn">+上传动作视频</span>
+					<input type="file" name="files" style="display: none;" id="action_video">
+				</div>
+				<div class="upVideoBox"></div>
+			</div>
+			<div class="message-item content-box">
+				<span>动作简介</span>
+				<div class="actionSummary">
+					<textarea id="richTextBox" name="content"></textarea>
+				</div>
+			</div>
+			<div class="message-item submitBox">
+				<button class="submitBtn">保存</button>
+				<button class="cancel">取消</button>
+			</div>
+		</div>
+	</div>
+	<script charset="utf-8" type="text/javascript" src="javascript/addAction.js"></script>
+</body>
+</html>

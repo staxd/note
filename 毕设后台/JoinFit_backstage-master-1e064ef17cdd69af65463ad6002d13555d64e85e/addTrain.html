@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>添加训练</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="css/addTrain.css">
+	<link rel="stylesheet" href="javascript/kindeditor/themes/default/default.css" />
+    <link rel="stylesheet" href="javascript/kindeditor/plugins/code/prettify.css" />
+    <script charset="utf-8" type="text/javascript" src="javascript/jquery-3.3.1.min.js"></script>
+    <script charset="utf-8" type="text/javascript" src="javascript/kindeditor/kindeditor-all-min.js"></script>
+    <script charset="utf-8" type="text/javascript" src="javascript/kindeditor/lang/zh-CN.js"></script>
+    <script charset="utf-8" type="text/javascript" src="javascript/kindeditor/plugins/code/prettify.js"></script>
+
+</head>
+<body>
+	<div class="addTrain-page" id="content">
+		<div class="addTrain-box">
+			<p>添加训练</p>
+			<div class="message-item">
+				<span>训练名称</span>
+				<input type="text" name="">
+			</div>
+			<div class="message-item">
+				<span>训练状态</span>
+				<select>
+					<option>启用</option>
+				</select>
+			</div>
+			<div class="message-item">
+				<span>卡路里</span>
+				<input type="text" name="">
+			</div>
+			<div class="message-item">
+				<span>时长</span>
+				<input type="text" name="">
+			</div>
+			<div class="message-item">
+				<span>难度</span>
+				<input type="text" name="">
+			</div>
+			<div class="message-item">
+				<span>部位</span>
+				<input type="text" name="">
+			</div>
+			<div class="message-item">
+				<span>使用器械</span>
+				<input type="text" name="">
+			</div>
+			<div class="message-item video-action">
+				<span>训练视频</span>
+				<div class="chooseVideo">
+					<span class="chooseVideo_btn">+选择动作视频</span>
+				</div>
+				<div class="chooseVideoBox"></div>
+			</div>
+			<div class="message-item content-box">
+				<span>训练简介</span>
+				<div class="trainSummary">
+					<textarea id="richTextBox" name="content"></textarea>
+				</div>
+			</div>
+			<div class="message-item submitBox">
+				<button class="submitBtn">保存</button>
+				<button class="cancel">取消</button>
+			</div>
+		</div>
+		<div class="maskLayer" style="clear: both;">
+			<div class="actionChoose">
+				<div class="actionChoose_title">
+					<label>选择动作视频</label>
+				</div>
+				<div class="actionChoose_search">
+					<div class="search_content">
+						<label>动作名称：</label>
+						<input type="" name="">
+					</div>
+					<div class="search_content">
+						<label>使用器械：</label>
+						<select>
+							<option></option>
+						</select>
+					</div>
+					<button>搜索</button>
+				</div>
+				<div class="actionChoose_list">
+					<table class="actionChoose_listContent">
+						<tbody>
+							<tr class="actionChoose_item">
+								<td class="action_img">
+									<img src="" alt="action.png" />
+								</td>
+								<td class="action_name">辅助卷腹</td>
+								<td class="action_num">12次</td>
+								<td class="action_time">120″</td>
+								<td class="action_apparatus">XX器械</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script charset="utf-8" type="text/javascript" src="javascript/addTrain.js"></script>
+</body>
+</html>
