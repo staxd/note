@@ -31,7 +31,9 @@ var sideNav = new Vue({
 						that.showTrue = true
 						that.showFalse = false
 						that.warn = false
-						window.location.href = "./mainPage.html";
+						var timer = setTimeout(function(){
+							window.location.href = "./mainPage.html";
+						},2000)
 					} else {
 						that.showTrue = false
 						that.showFalse = true
