@@ -3,6 +3,142 @@
 	padding: 0;
 }
 
+/* 1.开始*/
+.margin0 {
+  margin: 0px !important;
+}
+
+.marginL15 {
+  margin-left: 15px !important;
+}
+
+.marginL18 {
+  margin-left: 18px !important;
+}
+
+.marginL25 {
+  margin-left: 25px !important;
+}
+
+.marginL30 {
+  margin-left: 30px !important;
+}
+
+.marginL40 {
+  margin-left: 40px !important;
+}
+
+.marginR15 {
+  margin-right: 15px !important;
+}
+
+.marginR18 {
+  margin-right: 18px !important;
+}
+
+.marginR24 {
+  margin-right: 24px !important;
+}
+
+.marginR30 {
+  margin-right: 30px !important;
+}
+
+.marginR37 {
+  margin-right: 37px !important;
+}
+
+.marginR40 {
+  margin-right: 40px !important;
+}
+
+.marginR50 {
+  margin-right: 50px !important;
+}
+
+.marginR55 {
+  margin-right: 55px !important;
+}
+.marginB10{
+    margin-bottom:10px!important;
+}
+
+
+
+.padding0{
+  padding:0px!important;
+}
+.padding1_3{
+  padding:1px 3px!important;
+}
+.paddingL0{
+  padding-left: 0px!important;
+}
+.paddingL10{
+  padding-left: 10px!important;
+}
+.paddingL20 {
+  padding-left: 20px !important;
+}
+
+.paddingL30 {
+  padding-left: 30px !important;
+}
+
+.paddingL40 {
+  padding-left: 40px !important;
+}
+.paddingL50{
+    padding-left: 50px!important;
+}
+.paddingL60{
+    padding-left: 60px!important;
+}
+.paddingL70{
+    padding-left: 70px!important;
+}
+
+.text_left{
+    text-align: left!important;
+}
+.text_center{
+    text-align: center!important;
+}
+.text_right{
+    text-align: right!important;
+}
+.width100{
+  width: 100%!important;
+}
+.width_250 {
+    min-width: 250px;
+    display: flex;
+    flex-wrap: nowrap;
+    height: 64px;
+    align-items: center;
+}
+.row_center{
+    display: flex!important;
+    flex-direction: row!important;
+    justify-items: center!important;
+}
+.no_image{
+    background-image: none!important;
+}
+.background_fff{
+  background: #fff!important;
+}
+.input-group-addon{
+  border-radius: 2px!important;
+
+}
+.display_none{
+	display: none;
+}
+.disaplay_block{
+	display: block;
+}
+/* 1.结束*/
 html,body{
 	background-color: #EFF2F7;
 	height: 100%;

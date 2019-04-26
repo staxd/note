@@ -29,37 +29,3 @@ var sideNav = new Vue({
 		} 
 	}
 })
-//简单ajax封装
-//div  --> @click.capture="doc"
-
-
-//js -->
-// var list_options = {
-// 	type:'get',
-// 	url:'deliveryList',
-// 	data:{
-// 		state:1,
-// 		gageNo:1,
-// 		pageSize:10
-// 	}
-// }
-// var list_back = function(e){
-// 	console.log(e)
-// }
-// sendAjax(list_options,list_back)
-
-function sendAjax(obj,callback){
-	var _defaults = {
-            // `url` 是请求的接口地址
-            url: obj.url || "",
-            // `method` 是请求的方法
-            method: obj.type || 'get', // 默认值
-            //config
-            baseURL: 'http://47.74.191.135:8080/delivery/delivery/',
-            headers: { 'Content-Type':'application/json' },
-            data: obj.data || {}
-        }
-        _defaults.method = _defaults.method.toUpperCase()
-
-        axios(_defaults).then(callback).catch(function(e){alert("请求失败！")});;
-    }
