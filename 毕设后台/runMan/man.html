@@ -12,11 +12,11 @@
 <body>
 	<div class="bannermanage-page" id="content">
 		<div class="topBar">
-			<div class="searchcondition">
+			<!-- <div class="searchcondition">
 				<span>订单搜索:</span>
 				<input type="text" name="">
 			</div>
-			<button class="public_btn">搜索</button>
+			<button>搜索</button> -->
 		</div>
 		<div id="contentBox" class="contentBox">
 			<table class="contentList">
@@ -27,7 +27,7 @@
 								<input type="checkbox" value="" id="selectall-banner">
 							</label>
 						</th>
-						<th class="text_center" :class="type.class" v-for="(type, index) in types" @click="choose(index)" v-show="showTrue" style="display:none">{{type.type}}</th>
+						<th  :class="type.class" class="text_center" v-for="(type, index) in types" @click="choose(index)" v-show="showTrue" style="display:none">{{type.type}}</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -37,23 +37,17 @@
 								<input type="checkbox" value="" class="bannerItem">
 							</label>
 						</td>
-						<td class="no-banner">{{item.deliveryNumber}}</td>
-						<td class="img-banner">{{item.phone}}</td>
+						<td class="no-banner1 text_center">{{item.classes}}</td>
+						<td class="img-banner">{{item.name}}</td>
+						<td class="title-banner">{{item.schoolNum}}</td>
+						<td class="position-banner">{{item.phone}}</td>
 
-						<td v-if='item.type==1' class="title-banner">定点配送</td>
-						<td v-else-if='item.type==2'>按时配送</td>
+						<td v-if='item.examine == 1' class="content-banner">已审核</td>
+						<td v-else-if='item.examine == 0' class="content-banner">待审核</td>
 
-						<td class="position-banner">{{item.publisher}}</td>
-						<td class="content-banner">{{item.address}}</td>
-
-						<td v-if='item.state==0' class="state-banner">待配送</td>
-						<td v-if='item.state==1' class="state-banner">配送中</td>
-						<td v-if='item.state==2' class="state-banner">已完成</td>
-
-						<td class="state-banner">{{item.bonus}}</td>
-						<td class="state-banner">{{item.requirement}}</td>
-						<td class="takeEffect-banner">{{item.recipient}}</td>
+						<td class="state-banner">{{item.deposit}}</td>
 						<td class="invalid-banner">{{item.gmtCreated}}</td>
+						<td class="invalid-banner">{{item.gmtModified}}</td>
 						<td class="operation">
 								<div class="mainDelete">删除</div>
 						</td>
@@ -82,6 +76,6 @@
 	<script src="js/tools/bootstrap.js"></script>
 	<script type="text/javascript" src="js/tools/toastr.js"></script>
 	<script type="text/javascript" src="js/tools/vue.js"></script>
-	<script type="text/javascript" src="js/order.js"></script>
+	<script type="text/javascript" src="js/man.js"></script>
 
 </html>

@@ -25,9 +25,8 @@ var sideNav = new Vue({
 						password: that.$refs.password.value,
 					}
 				}
-				var list_back = function (e) {
-					console.log(e)
-					if (e.data.code == '200') {
+				var list_back = function (res) {
+					if (res.code == '200') {
 						that.showTrue = true
 						that.showFalse = false
 						that.warn = false

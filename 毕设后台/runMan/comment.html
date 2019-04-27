@@ -5,8 +5,8 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/toastr.css">
 	<link href="css/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/toastr.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
@@ -38,22 +38,10 @@
 							</label>
 						</td>
 						<td class="no-banner">{{item.deliveryNumber}}</td>
-						<td class="img-banner">{{item.phone}}</td>
-
-						<td v-if='item.type==1' class="title-banner">定点配送</td>
-						<td v-else-if='item.type==2'>按时配送</td>
-
-						<td class="position-banner">{{item.publisher}}</td>
-						<td class="content-banner">{{item.address}}</td>
-
-						<td v-if='item.state==0' class="state-banner">待配送</td>
-						<td v-if='item.state==1' class="state-banner">配送中</td>
-						<td v-if='item.state==2' class="state-banner">已完成</td>
-
-						<td class="state-banner">{{item.bonus}}</td>
-						<td class="state-banner">{{item.requirement}}</td>
-						<td class="takeEffect-banner">{{item.recipient}}</td>
-						<td class="invalid-banner">{{item.gmtCreated}}</td>
+						<td class="img-banner">{{item.userNum}}</td>
+						<td class="title-banner">{{item.clerkPhone}}</td>
+						<td class="position-banner">{{item.evaluate}}</td>
+						<td class="invalid-banner">{{item.comment}}</td>
 						<td class="operation">
 								<div class="mainDelete">删除</div>
 						</td>
@@ -82,6 +70,6 @@
 	<script src="js/tools/bootstrap.js"></script>
 	<script type="text/javascript" src="js/tools/toastr.js"></script>
 	<script type="text/javascript" src="js/tools/vue.js"></script>
-	<script type="text/javascript" src="js/order.js"></script>
+	<script type="text/javascript" src="js/comment.js"></script>
 
 </html>

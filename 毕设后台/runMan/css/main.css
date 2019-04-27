@@ -279,7 +279,24 @@ a{
 	background-color: #475669;
 }
 
-
+.mainAdd{
+	width: 100%;
+	 text-align: center;
+	 color:rgba(103,194,58,1);
+	 cursor: pointer;
+}
+.mainEdit{
+	color: #38f;
+	width: 100%;
+	 cursor: pointer;
+	text-align: center;
+}
+.mainDelete{
+	color: red;
+	width: 100%;
+	 cursor: pointer;
+	text-align: center;
+}
 .mainContent{
 	float: left;
 	width: 94%;/*写给不支持calc()的浏览器*/
@@ -367,7 +384,7 @@ ul,li{
 	border:1px solid rgba(189,189,189,1);
 }
 
-.topBar button,#addBanner{
+.public_btn{
 	width:80px;
 	height:32px;
 	font-size: 14px;
@@ -382,7 +399,16 @@ ul,li{
 	margin: auto;
 	margin-left: 20px;
 }
-
+.public_sub_btn{
+	width:80px;
+	height:32px;
+	font-size: 14px;
+	color: #fff;
+	line-height: 32px;
+	background:rgba(103,194,58,1);
+	border: 0px;
+	border-radius:2px;
+}
 #addBanner{
 	right: 20px;
 }
@@ -449,7 +475,11 @@ ul,li{
 	padding-left: 60px;
 	text-align:left;
 }
-
+.no-banner1{
+	min-width: 220px;
+	padding-left: 60px;
+	text-align:left;
+}
 .img-banner{
 	min-width: 120px;
 }
@@ -493,7 +523,11 @@ ul,li{
 	min-width: 120px;
 
 }
-
+.operation{
+	min-width: 120px;
+	display: flex;
+	justify-content: space-between;
+}
 .bottom-pageNum{
 	padding: 20px 0;
 	height: 70px;

@@ -40,6 +40,17 @@ function sendAjax(obj, callback) {
 		data: obj.data || {}
 	}
 	_defaults.method = _defaults.method.toUpperCase()
+	const scallback = callback || function(data) {};
+	axios(_defaults).then(function(res){
+		console.log(res)
+	if (res.data.code == 200) {
+        scallback(res.data)
+      }else if(res.data.code == 500){
+      	toastr.error(res.data.message);
+      }else{
+      	toastr.error('处理失败！');
 
-	axios(_defaults).then(callback).catch(function (e) { console.log("请求失败！") });;
+      }
+
+	}).catch(function (e) {toastr.error('处理失败！');});;
 }
