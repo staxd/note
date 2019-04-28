@@ -15,8 +15,7 @@ var list_back = function (res) {
 			{type:'用户学号',class:"img-banner"},
 			{type:'用户手机号',class:"title-banner"},
 			{type:'打分星数',class:"position-banner"},
-			{type:'评论内容',class:"yaoqiu-banner"},
-			{type:'操作',class:"operation-banner"}
+			{type:'评论内容',class:"yaoqiu-banner"}
 			],
 			items:res.items,
 			showTrue:true

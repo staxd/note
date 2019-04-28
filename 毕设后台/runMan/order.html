@@ -55,7 +55,7 @@
 						<td class="takeEffect-banner">{{item.recipient}}</td>
 						<td class="invalid-banner">{{item.gmtCreated}}</td>
 						<td class="operation">
-								<div class="mainDelete">删除</div>
+								<div class="mainDelete"  @click.capture="doc">删除</div>
 						</td>
 					</tr>
 				</tbody>

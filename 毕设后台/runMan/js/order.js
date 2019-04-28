@@ -27,7 +27,8 @@ var list_back = function (res) {
 			showTrue:true
 		},
 		methods:{
-			choose:function (index) {
+			doc:function (index) {
+				
 			} 
 		}
 	})
