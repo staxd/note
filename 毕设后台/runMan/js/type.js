@@ -1,4 +1,5 @@
 //获取列表
+
 var list_options = {
 	type: 'get',
 	url: 'delivery/deliveryType',
@@ -7,7 +8,7 @@ var list_options = {
 }
 var list_back = function (res) {
 	var order = new Vue({
-		el: '#contentBox',
+		el: '.contentBox',
 		data: {
 			types:[
 			{type:'id',class:"title-banner"},
@@ -18,36 +19,33 @@ var list_back = function (res) {
 			showTrue:true
 		},
 		methods:{
-			choose:function (index) {
-			} 
-		}
-	})
-	
-}
-sendAjax(list_options, list_back)
-//提交
-var sub = new Vue({
-	el: '#myModal',
-	data: {
-	},
-	methods: {
-		doc: function (index) {
-			var that = this
-			var list_options = {
-				type: 'post',
-				url: 'delivery/addDeliveryType',
-				data: {
-					typeName: that.$refs.typeName.value,
+			doc: function (index) {
+				var that = this
+				if(that.$refs.typeName.value!=''){
+					var list_options = {
+						type: 'post',
+						url: 'delivery/addDeliveryType',
+						data: {
+							typeName: that.$refs.typeName.value,
+						}
+					}
+					var list_back = function (res) {
+						toastr.success("添加成功！")
+						var item = that.items
+						item.push({
+							id:item.length+1,
+							typeName:that.$refs.typeName.value
+						})
+						that.items = item
+						console.log(that.items)
+					}
+					sendAjax(list_options, list_back)
 				}
 			}
-			var list_back = function (res) {
-			}
-			sendAjax(list_options, list_back)
-			
-			
 		}
-	}
-})
+	})
+}
+sendAjax(list_options, list_back)
 
 
 

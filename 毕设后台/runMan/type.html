@@ -43,6 +43,30 @@
 							<div class="mainAdd"  data-toggle="modal" data-target="#myModal">添加</div>
 							<div class="mainDelete">删除</div>
 						</td>
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+											&times;
+										</button>
+										<h4 class="modal-title" id="myModalLabel">
+											添加类型
+										</h4>
+									</div>
+									<div class="modal-body">
+										类型名：<input type="text" id="typeName" name="" ref='typeName'>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default marginR15" data-dismiss="modal">关闭
+										</button>
+										<button type="button" id="typeSub" class="public_sub_btn" data-dismiss="modal" @click.capture="doc">
+											提交
+										</button>
+									</div>
+								</div><!-- /.modal-content -->
+							</div><!-- /.modal -->
+						</div>
 					</tr>
 				</tbody>
 			</table>
@@ -62,36 +86,13 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-						&times;
-					</button>
-					<h4 class="modal-title" id="myModalLabel">
-						添加类型
-					</h4>
-				</div>
-				<div class="modal-body">
-					类型名：<input type="text" id="typeName" name="" ref='typeName'>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default marginR15" data-dismiss="modal">关闭
-					</button>
-					<button type="button" id="typeSub" class="public_sub_btn" data-dismiss="modal" @click.capture="doc">
-						提交
-					</button>
-				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal -->
-	</div>
+	
 </body>
 <script src="js/tools/sendAjax.js"></script>
 <script src="js/tools/jq.js"></script>
 <script src="js/tools/bootstrap.js"></script>
 <script type="text/javascript" src="js/tools/vue.js"></script>
-	<script type="text/javascript" src="js/tools/toastr.js"></script>
+<script type="text/javascript" src="js/tools/toastr.js"></script>
 <script type="text/javascript" src="js/type.js"></script>
 
 </html>

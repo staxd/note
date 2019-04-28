@@ -44,7 +44,6 @@ function sendAjax(obj, callback) {
 	axios(_defaults).then(function(res){
 		console.log(res)
 	if (res.data.code == 200) {
-		window.location.href = "index.html";
         scallback(res.data)
       }else if(res.data.code == 500){
       	toastr.error(res.data.message);
