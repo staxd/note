@@ -27,7 +27,7 @@
 								<input type="checkbox" value="" id="selectall-banner">
 							</label>
 						</th>
-						<th class="text_center" :class="type.class" v-for="(type, index) in types" @click="choose(index)" v-show="showTrue" style="display:none">{{type.type}}</th>
+						<th class="text_center" :class="type.class" v-for="(type, index) in types" v-show="showTrue" style="display:none">{{type.type}}</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -55,7 +55,7 @@
 						<td class="takeEffect-banner">{{item.recipient}}</td>
 						<td class="invalid-banner">{{item.gmtCreated}}</td>
 						<td class="operation">
-								<div class="mainDelete"  @click.capture="doc">删除</div>
+								<div class="mainDelete" @click.capture="doc(item,index)">删除</div>
 						</td>
 					</tr>
 				</tbody>

@@ -37,13 +37,14 @@ function sendAjax(obj, callback) {
 		//config
 		baseURL: 'http://47.74.191.135:8080/delivery/',
 		headers: { 'Content-Type': 'application/json' },
-		data: obj.data || {}
 	}
 	_defaults.method = _defaults.method.toUpperCase()
+	_defaults.method == 'GET' ? _defaults.params=obj.data || {} : _defaults.data = obj.data || {}
 	const scallback = callback || function(data) {};
 	axios(_defaults).then(function(res){
 		console.log(res)
 	if (res.data.code == 200) {
+		window.location.href = "index.html";
         scallback(res.data)
       }else if(res.data.code == 500){
       	toastr.error(res.data.message);
