@@ -41,6 +41,29 @@ var list_back = function (res) {
 					}
 					sendAjax(list_options, list_back)
 				}
+			},
+			delect:function(item,index){
+				console.log(item,index)
+				var id = item.id
+				var that = this
+					var list_options = {
+						type: 'delete',
+						url: 'delivery/deleteDeliveryType?id='+id,
+						data: {
+							
+						}
+					}
+					var list_back = function (res) {
+						toastr.success("删除成功！")
+						var arr = []
+						for (let i in that.items) {
+							if (i != index) {
+								arr.push(that.items[i])
+							}
+						}
+						that.items = arr
+					}
+					sendAjax(list_options, list_back)
 			}
 		}
 	})

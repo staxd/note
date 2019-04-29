@@ -48,7 +48,7 @@ function sendAjax(obj, callback) {
       }else if(res.data.code == 500){
       	toastr.error(res.data.message);
       }else{
-      	toastr.error('处理失败！');
+		toastr.error(res.data.message|| '处理失败！');
 
       }
 

@@ -14,9 +14,9 @@
 		<div class="topBar">
 			<div class="searchcondition">
 				<span>订单搜索:</span>
-				<input type="text" name="">
+				<input type="text" name="" ref='orderSearch'>
 			</div>
-			<button class="public_btn">搜索</button>
+			<button class="public_btn" @click.capture="search">搜索</button>
 		</div>
 		<div id="contentBox" class="contentBox">
 			<table class="contentList">

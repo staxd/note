@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title></title>
 	<meta charset="utf-8">
@@ -9,6 +10,7 @@
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
+
 <body>
 	<div class="bannermanage-page" id="content">
 		<div class="topBar">
@@ -27,12 +29,13 @@
 								<input type="checkbox" value="" id="selectall-banner">
 							</label>
 						</th>
-						<th  :class="type.class" class="text_center" v-for="(type, index) in types" @click="choose(index)" v-show="showTrue" style="display:none">{{type.type}}</th>
+						<th :class="type.class" class="text_center" v-for="(type, index) in types"
+							@click="choose(index)" v-show="showTrue" style="display:none">{{type.type}}</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr v-for="(item, index) in items" style="display:none" v-show="showTrue">
-						<td  class="checkBox">
+						<td class="checkBox">
 							<label>
 								<input type="checkbox" value="" class="bannerItem">
 							</label>
@@ -42,40 +45,77 @@
 						<td class="title-banner">{{item.schoolNum}}</td>
 						<td class="position-banner">{{item.phone}}</td>
 
-						<td v-if='item.examine == 1' class="content-banner">已审核</td>
-						<td v-else-if='item.examine == 0' class="content-banner">待审核</td>
+						<td v-if='item.examine == 1' class="content-banner mainAdd">已审核</td>
+						<td v-else-if='item.examine == 0' class="content-banner mainEdit">待审核</td>
+						<td v-else-if='item.examine == 2' class="content-banner mainDelete">不通过</td>
 
 						<td class="state-banner">{{item.deposit}}</td>
 						<td class="invalid-banner">{{item.gmtCreated}}</td>
 						<td class="invalid-banner">{{item.gmtModified}}</td>
 						<td class="operation">
-								<div class="mainDelete">删除</div>
+							<div class="mainAdd" data-toggle="modal" data-target="#myModal">审核</div>
+							<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+								aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+												&times;
+											</button>
+											<h4 class="modal-title" id="myModalLabel">
+												配送员审核
+											</h4>
+										</div>
+										<div class="modal-body row_left">
+											<div class="radio marginT0">
+												<label>
+													<input type="radio" name="optionsRadios" id="optionsRadios1" value="2" v-model="picked"> 审核不通过
+												</label>
+											</div>
+											<div class="radio marginT0 marginL15">
+												<label>
+													<input type="radio" name="optionsRadios" id="optionsRadios1" value="1" v-model="picked"> 审核通过
+												</label>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default marginR15"
+												data-dismiss="modal">关闭
+											</button>
+											<button type="button" id="typeSub" class="public_sub_btn"
+												data-dismiss="modal" @click.capture="sub(item,index)">
+												提交
+											</button>
+										</div>
+									</div><!-- /.modal-content -->
+								</div><!-- /.modal -->
+							</div>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<div class="bottom-pageNum">
-				<ul>
-					<li><a class="pre-page" href=""></a></li>
-					<li><a class="num-page num-actived" href="">1</a></li>
-					<li><a class="num-page" href="">2</a></li>
-					<li><a class="num-page more-page" href=""></a></li>
-					<li><a class="next-page" href=""></a></li>
-				</ul>
-				<div class="showCheck">
-					<select>
-						<option><span>10</span> 条/页</option>
-					</select>
-				</div>
+			<ul>
+				<li><a class="pre-page" href=""></a></li>
+				<li><a class="num-page num-actived" href="">1</a></li>
+				<li><a class="num-page" href="">2</a></li>
+				<li><a class="num-page more-page" href=""></a></li>
+				<li><a class="next-page" href=""></a></li>
+			</ul>
+			<div class="showCheck">
+				<select>
+					<option><span>10</span> 条/页</option>
+				</select>
 			</div>
+		</div>
 	</div>
 </body>
-	<script src="js/tools/sendAjax.js"></script>
-	<script src="js/tools/jq.js"></script>
-	<script src="js/tools/bootstrap.js"></script>
-	<script type="text/javascript" src="js/tools/toastr.js"></script>
-	<script type="text/javascript" src="js/tools/vue.js"></script>
-	<script type="text/javascript" src="js/man.js"></script>
+<script src="js/tools/sendAjax.js"></script>
+<script src="js/tools/jq.js"></script>
+<script src="js/tools/bootstrap.js"></script>
+<script type="text/javascript" src="js/tools/toastr.js"></script>
+<script type="text/javascript" src="js/tools/vue.js"></script>
+<script type="text/javascript" src="js/man.js"></script>
 
 </html>

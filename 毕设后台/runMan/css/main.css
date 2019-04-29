@@ -7,7 +7,9 @@
 .margin0 {
 	margin: 0px !important;
 }
-
+.marginT0{
+	margin-top: 0!important;
+}
 .marginL15 {
 	margin-left: 15px !important;
 }
@@ -224,7 +226,7 @@ a{
 	min-height:-moz-calc(100% - 60px);
 	min-height:-webkit-calc(100% - 60px);
 	min-height: calc(100% - 60px);
-	background:rgba(50,64,87,1);
+	background:#292c31;
 	border-radius:2px;
 	position: relative;
 	bottom: 0;
@@ -232,7 +234,10 @@ a{
 	float: left;
 
 }
-
+.row_left{
+	display: flex;
+	flex-direction: row;
+}
 .emptyBox{
 	margin-top: 10px;
 }

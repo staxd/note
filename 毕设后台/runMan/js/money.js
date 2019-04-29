@@ -2,6 +2,7 @@ var list_options = {
 	type: 'get',
 	url: 'delivery/deliveryList',
 	data: {
+		state:2,
 		pageNo: 1,
 		pageSize:10,
 	}
@@ -15,8 +16,7 @@ var list_back = function (res) {
 			{type:'发布者学号',class:"position-banner"},
 			{type:'配送员学号',class:"invalid-banner"},
 			{type:'奖金',class:"takeEffect-banner"},
-			{type:'创建时间',class:"time-banner"},
-			{type:'操作',class:"operation-banner"}
+			{type:'创建时间',class:"time-banner"}
 			],
 			items:res.items,
 			showTrue:true

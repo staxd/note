@@ -22,10 +22,33 @@ var list_back = function (res) {
 			{type:'操作',class:"operation-banner"}
 			],
 			items:res.items,
-			showTrue:true
+			showTrue:true,
+			picked:''
+
 		},
 		methods:{
-			choose:function (index) {
+			sub:function (item,index) {
+				var that = this
+				// console.log(item,index,that.picked)
+				if(item.examine==0){
+					var list_options = {
+						type: 'get',
+						url: 'delivery/audit',
+						data: {
+							examine: Number(that.picked),
+							schoolNum: item.schoolNum
+						}
+					}
+					var list_back = function (res) {
+						toastr.success("操作成功！")
+						that.items[index].examine = Number(that.picked)
+						console.log(that.items)
+					}
+					sendAjax(list_options, list_back)
+				}else{
+					toastr.success("您已审核完毕！")
+				}
+				
 			} 
 		}
 	})

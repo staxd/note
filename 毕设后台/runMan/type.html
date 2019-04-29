@@ -41,7 +41,7 @@
 						<td class="position-banner">{{item.typeName}}</td>
 						<td class="operation">
 							<div class="mainAdd"  data-toggle="modal" data-target="#myModal">添加</div>
-							<div class="mainDelete">删除</div>
+							<div class="mainDelete" @click.capture="delect(item,index)">删除</div>
 						</td>
 						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 							<div class="modal-dialog">

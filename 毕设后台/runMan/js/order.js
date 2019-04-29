@@ -9,7 +9,7 @@
 	}
 	var list_back = function (res) {
 		var order = new Vue({
-			el: '#contentBox',
+			el: '#content',
 			data: {
 				types: [
 					{ type: '订单编号', class: "no-banner" },
@@ -49,7 +49,21 @@
 						that.items = arr
 					}
 					sendAjax(list_options, list_back)
-				}
+				},
+				search: function () {
+					var that = this
+					var list_options = {
+						type: 'get',
+						url: 'delivery/deliveryDetails/' + that.$refs.orderSearch.value,
+						data: {
+						}
+					}
+					var list_back = function (res) {
+						that.items=[]
+						that.items.push(res)
+					}
+					sendAjax(list_options, list_back)
+				},
 			}
 		})
 

@@ -25,7 +25,7 @@
 	</div>
 	<div class="sideNav">
 		<div class="emptyBox"></div>
-		 <div class="sideNav-item" :class="[ types[index].class , { actived: type.selected }]" :class="type.class" v-for="(type, index) in types" @click="choose(index)">{{type.type}}</div>
+		 <div v-show="showTrue" style="display:none" class="sideNav-item" :class="[ types[index].class , { actived: type.selected }]" :class="type.class" v-for="(type, index) in types" @click="choose(index)">{{type.type}}</div>
 	</div>
 	<div class="mainContent" id="viewDiv">
 	</div>
