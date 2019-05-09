@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>水质管理系统后台_登录</title>
+	<meta charset="utf-8" />
+	<link rel="shortcut icon" type="image/x-icon" href="">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	<div class="mainBox">
+		<div class="logoBox">
+			<!-- <img src="img/mainLogo.png" alt="logo.png" /> -->
+		</div>
+		<div class="loginBox">
+			<p>水质管理系统</p>
+			<div v-show="showTrue" style="display:none" class="alert alert-success text_center">登录成功！</div>
+			<div v-show="showFalse" style="display:none" class="alert alert-danger text_center">密码错误！</div>
+			<div v-show="warn" style="display:none" class="alert alert-warning text_center">密码或密码不能为空！</div>
+			<input  type="text" ref='userName' placeholder="账号" />
+			<input  type="password" ref='password' placeholder="密码" />
+			<button id="loginBtn" @click.capture="doc" >登录</button>
+		</div>
+	</div>
+
+	<script src="js/tools/vue.js"></script>
+	<script src="js/tools/jq.js"></script>
+	<script src="js/tools/bootstrap.js"></script>
+	<script src="js/tools/sendAjax.js"></script>
+	<script src="js/index.js"></script>
+</body>
+</html>
