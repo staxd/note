@@ -1,80 +1,85 @@
-
-	var list_options = {
-		type: 'get',
-		url: 'quality/notice',
-		data: {
-			state:1,
-			pageNo: 1,
-			pageSize: 999,
-		}
+var nowDate = new Date();
+var year = nowDate.getFullYear();
+var month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1)
+: nowDate.getMonth() + 1;
+var day = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate
+.getDate();
+var hour = nowDate.getHours(); 
+var minutes = nowDate.getMinutes();
+var seconds = nowDate.getSeconds();
+var dateStr = year + "-" + month + "-" + day +" " + hour +":" +minutes+":"+seconds; 
+var list_options = {
+	type: 'get',
+	url: 'quality/notice',
+	data: {
+		pageNo: 1,
+		pageSize: 999,
 	}
-	var list_back = function (res) {
-		var news = new Vue({
-			el: '#content',
-			data: {
-				types: [
-				{ type: '封面', class: "title-banner" },
-					{ type: '类型', class: "takeEffect-banner" },
-					{ type: '标题', class: "img-banner" },
-					{ type: '内容', class: "yaoqiu-banner" },
-					{ type: '创建时间', class: "time-banner" },
-					{ type: '操作', class: "operation-banner" }
-				],
-				items: res.items,
-				showTrue: true,
-				content:'',
-				picked:''
-			},
-			methods: {
-				doc: function (item, index) {
-					var that = this
+}
+var list_back = function (res) {
+	var news = new Vue({
+		el: '#content',
+		data: {
+			types: [
+			{ type: '封面', class: "title-banner" },
+			{ type: '类型', class: "takeEffect-banner" },
+			{ type: '标题', class: "img-banner" },
+			{ type: '内容', class: "yaoqiu-banner" },
+			{ type: '创建时间', class: "time-banner" },
+			// { type: '操作', class: "operation-banner" }
+			],
+			items: res.items,
+			showTrue: true,
+			content:'',
+			picked:'',
+			poster:''
+		},
+		methods: {
+			add: function () {
+				var that = this
+				var list_options = {
+					type: 'post',
+					url: 'quality/addNews',
+					data: {
+						typeId:that.picked,
+						title:that.$refs.title.value,
+						content:that.$refs.content.value,
+						poster:that.poster
+					}
 
-					var list_options = {
-						type: 'get',
-						url: 'delivery/deleteDelivery',
-						data: {
-							deliveryNumber: item.deliveryNumber
-						}
-					}
-					var list_back = function (res) {
-						toastr.success('删除成功！')
-						var arr = []
-						for(let i in that.items){
-							if(i!=index){
-								arr.push(that.items[i])
-							}
-						}
-						that.items = arr
-					}
+				}
+				var list_back = function (res) {
+					var list = that.items
+					var addList = list_options.data
+					addList.gmtCreated = dateStr
+					list.unshift(addList)
+					that.items = list
+					//清空表单数据
+					that.picked=''
+					that.$refs.title.value=''
+					that.$refs.content.value=''
+					that.poster = ''
+					that.$refs.file.value= ''
+				}
+					// console.log(list_options)
 					sendAjax(list_options, list_back)
-				},add: function () {
+				},
+				doSomethingElse(obj){
 					var that = this
-					console.log(that.$refs.file.files[0])
-					var file = new File([that.$refs.file.files[0]], filename, {type: contentType, lastModified: Date.now()});
+					var _form_data = new FormData();
+					_form_data.append('picType', 'vote');
+					_form_data.append('files', that.$refs.file.files[0]);
 					var list_options = {
 						type: 'post',
-						baseURL:'https://buguanjia.com/',
-						url: 'api/upload/pic',
-						headers:{
-							'Content-Type': 'multipart/form-data',
-							'authorization':'E+qOs+l4aNKDf0UyzAMTI9tMlaQHMkK+nERH6N/W6zj44mA0HgVQf9b2ij2s9beF'
-						},
-						data: {
-							bizType:1,
-							files:file
-						}
+						baseURL:'https://www.sxscott.com/crazyBird/',
+						url: 'upload/pic',
+						data: _form_data
 					}
 					var list_back = function (res) {
-						toastr.success('删除成功！')
-						var arr = []
-						for(let i in that.items){
-							if(i!=index){
-								arr.push(that.items[i])
-							}
-						}
-						that.items = arr
+						that.poster = res.urlList[0]
 					}
 					sendAjax(list_options, list_back)
+
 				},
 				look(item,index){
 					console.log(item,index)
@@ -83,13 +88,6 @@
 			}
 		})
 
-	}
-	sendAjax(list_options, list_back)
-
-
-
-
-
-
-
+}
+sendAjax(list_options, list_back)
 

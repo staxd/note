@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/toastr.css">
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<script charset="utf-8" src="https://map.qq.com/api/js?v=2.exp&key=JL7BZ-MJE6X-OZD4A-TDDC6-ZVCO7-G6BNX"></script>
+
+</head>
+<body >
+	<div class="bannermanage-page" id="content" >
+		<div class="topBar">
+			<button class="public_btn" data-toggle="modal" data-target="#addModal" >+ 添加水质区域</button>
+			<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+								&times;
+							</button>
+							<h4 class="modal-title" id="myModalLabel">
+								添加水域
+							</h4>
+						</div>
+						<div class="modal-body color_4a4a4a" style="min-height: 400px;display: flex;flex-direction: column;justify-content: space-between;width: 100%" >
+							<div id ="container" style="width: 100%;height: 300px;"> </div>
+							<div class="mgt_10"><span style="color:red">*</span>区域名：<input type="text" id="title" name="" ref='regionName'></div>
+							<div class="mgt_10"><span style="color:red">*</span>经度：<input type="text" id="title" name="" ref='longitude'></div>
+							<div class="mgt_10"><span style="color:red">*</span>纬度：<input type="text" id="title" name="" ref='latitude'></div>
+							<div class="mgt_10"><span style="color:red">*</span>水域等级：<input type="text" id="title" name="" ref='grade'></div>
+
+
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default marginR15" data-dismiss="modal">关闭
+							</button>
+							<button type="button" id="typeSub" class="public_sub_btn" data-dismiss="modal" @click.capture="add">
+								提交
+							</button>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal -->
+			</div>
+		</div>
+		<div id="contentBox" class="contentBox">
+			<table class="contentList">
+				<thead>
+					<tr>
+						<th class="checkBox">
+							<label>
+								<input type="checkbox" value="" id="selectall-banner">
+							</label>
+						</th>
+						<th  :class="type.class" class="text_center" v-for="(type, index) in types" @click="choose(index)" v-show="showTrue" style="display:none">{{type.type}}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="(item, index) in items" style="display:none" v-show="showTrue">
+						<td  class="checkBox">
+							<label>
+								<input type="checkbox" value="" class="bannerItem">
+							</label>
+						</td>
+						<td class="no-banner1 text_center">{{item.regionName}}</td>
+						<td class="img-banner">{{item.longitude}}</td>
+						<td class="title-banner">{{item.latitude}}</td>
+						<td class="position-banner">{{item.grade}}</td>
+						<td class="operation">
+							<div class="mainEdit"  data-toggle="modal" data-target="#editModal" @click.capture="edit(item,index)">修改</div>
+							<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+												&times;
+											</button>
+											<h4 class="modal-title" id="myModalLabel">
+												修改水域
+											</h4>
+										</div>
+										<div class="modal-body color_4a4a4a" style="display: flex;">
+											水域等级：<input type="text" id="title" name="" ref='gradeEdit'  style="width: 150px;left: 100px">
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default marginR15" data-dismiss="modal">关闭
+											</button>
+											<button type="button" id="typeSub" class="public_sub_btn" data-dismiss="modal" @click.capture="editSub">
+												提交
+											</button>
+										</div>
+									</div><!-- /.modal-content -->
+								</div><!-- /.modal -->
+							</div>
+							<div class="mainDelete" @click.capture="del(item,index)">删除</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="bottom-pageNum">
+			<ul>
+				<li><a class="pre-page" href=""></a></li>
+				<li><a class="num-page num-actived" href="">1</a></li>
+				<li><a class="num-page" href="">2</a></li>
+				<li><a class="num-page more-page" href=""></a></li>
+				<li><a class="next-page" href=""></a></li>
+			</ul>
+			<div class="showCheck">
+				<select>
+					<option><span>10</span> 条/页</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="js/tools/sendAjax.js"></script>
+<script src="js/tools/jq.js"></script>
+<script src="js/tools/bootstrap.js"></script>
+<script type="text/javascript" src="js/tools/toastr.js"></script>
+<script type="text/javascript" src="js/tools/vue.js"></script>
+<script type="text/javascript" src="js/area.js"></script>
+
+
+</html>

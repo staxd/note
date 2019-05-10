@@ -12,7 +12,7 @@
 <body>
 	<div class="bannermanage-page" id="content">
 		<div class="topBar">
-			<button class="public_btn" data-toggle="modal" data-target="#addModal" >+ 添加</button>
+			<button class="public_btn" data-toggle="modal" data-target="#addModal" >+ 添加新闻/公告</button>
 			<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -26,9 +26,9 @@
 						</div>
 						<div class="modal-body color_4a4a4a" style="min-height: 400px;display: flex;flex-direction: column;justify-content: space-between;">
 							<div><span style="color:red">*</span>添加类型: <input type="radio" name="news" value="0" v-model='picked'>新闻<input type="radio" name="news" value="1" v-model='picked'>公告</div>
-							<div><span style="color:red">*</span>标题：<input type="text" id="typeName" name="" ref='typeName'></div>
-							<div><span style="color:red">*</span>内容：<textarea style="margin: 0px; width: 558px; height: 184px;"></textarea> </div>
-							<div><input type="file" name="" ref='file'></div>
+							<div><span style="color:red">*</span>标题：<input type="text" id="title" name="" ref='title'></div>
+							<div><span style="color:red">*</span>内容：<textarea style="margin: 0px; width: 558px; height: 184px;" ref='content'></textarea> </div>
+							<div><input type="file" name="" ref='file' @change="doSomethingElse(this)"></div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default marginR15" data-dismiss="modal">关闭
@@ -86,9 +86,9 @@
 						</div>
 						
 						<td class="invalid-banner">{{item.gmtCreated}}</td>
-						<td class="operation">
+						<!-- <td class="operation">
 							<div class="mainDelete" @click.capture="doc(item,index)">删除</div>
-						</td>
+						</td> -->
 					</tr>
 				</tbody>
 			</table>

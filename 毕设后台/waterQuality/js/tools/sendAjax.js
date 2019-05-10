@@ -36,7 +36,8 @@ function sendAjax(obj, callback) {
 		method: obj.type || 'get', // 默认值
 		//config
 		baseURL: obj.baseURL||'http://47.74.191.135:8080/quality/',
-		headers: obj.headers||{ 'Content-Type': 'application/json' },
+		headers: obj.headers||{ 'Content-Type': 'application/json',
+		"authorization":"ciRW3cOmi1JYY8niXxG7xxx3+b5no4/N5k3gZFChkEzIR+Cbv2rpqh2M8q7RuwTx"},
 	}
 	_defaults.method = _defaults.method.toUpperCase()
 	_defaults.method == 'GET' ? _defaults.params=obj.data || {} : _defaults.data = obj.data || {}
@@ -45,12 +46,10 @@ function sendAjax(obj, callback) {
 		console.log(res)
 	if (res.data.code == 200) {
         scallback(res.data)
-      }else if(res.data.code == 500){
-      	toastr.error(res.data.message);
       }else{
-      	toastr.error('处理失败！');
+      	toastr.error(res.data.message);
 
       }
 
-	}).catch(function (e) {toastr.error('处理失败！');});;
+	}).catch(function (e) {console.log(e)});;
 }
