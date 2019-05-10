@@ -27,7 +27,7 @@
 						<div class="modal-body color_4a4a4a" style="min-height: 400px;display: flex;flex-direction: column;justify-content: space-between;">
 							<div><span style="color:red">*</span>添加类型: <input type="radio" name="news" value="0" v-model='picked'>新闻<input type="radio" name="news" value="1" v-model='picked'>公告</div>
 							<div><span style="color:red">*</span>标题：<input type="text" id="title" name="" ref='title'></div>
-							<div><span style="color:red">*</span>内容：<textarea style="margin: 0px; width: 558px; height: 184px;" ref='content'></textarea> </div>
+							<div><span style="color:red">*</span>内容：<textarea style="margin: 0px; width: 565px; height: 282px;" ref='content'></textarea> </div>
 							<div><input type="file" name="" ref='file' @change="doSomethingElse(this)"></div>
 						</div>
 						<div class="modal-footer">
@@ -79,7 +79,7 @@
 										</h4>
 									</div>
 									<div class="modal-body color_4a4a4a">
-										{{content}}
+										<textarea style="margin: 0px;width: 568px;height: 458px;background: #fff;border:none" disabled="disabled">{{content}}</textarea>
 									</div>
 								</div><!-- /.modal-content -->
 							</div><!-- /.modal -->

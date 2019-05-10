@@ -39,8 +39,36 @@
 						<td class="no-banner1 text_center">{{item.regionName}}</td>
 						<td class="position-banner">{{item.grade}}</td>
 						<td class="operation">
-							<div class="mainAdd"  data-toggle="modal" data-target="#lookModal" @click.capture="look(item,index)">查看</div>
-							<div class="mainEdit"  data-toggle="modal" data-target="#editModal" @click.capture="edit(item,index)">修改</div>
+							<div class="mainAdd"  data-toggle="modal" data-target="#addModal" @click.capture="addGrade(item,index)">新增</div>
+							<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+												&times;
+											</button>
+											<h4 class="modal-title" id="myModalLabel">
+												新增水域详情
+											</h4>
+										</div>
+										<div class="modal-body color_4a4a4a" style="display: flex;flex-direction: column;">
+												<div>总氮：<input  type="text" id="title" name="" ref='tpaddDetail'  style="width: 150px;left: 100px;position: inherit;top: -120px">（mg/L）</div>
+												<div>总磷:<input  type="text" id="title" name="" ref='tnaddDetail'  style="width: 150px;left: 100px;position: inherit;top: -120px">（mg/L）</div>
+												<div>氨氮:<input  type="text" id="title" name="" ref='nhNaddDetail'  style="width: 150px;left: 100px;position: inherit;top: -120px">（mg/L）</div>
+												<div>化学需氧量:<input  type="text" id="title" name="" ref='codaddDetail'  style="width: 150px;left: 100px;position: inherit;top: -120px">（mg/L）</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default marginR15" data-dismiss="modal">关闭
+											</button>
+											<button type="button" id="typeSub" class="public_sub_btn" data-dismiss="modal" @click.capture="addSub">
+												提交
+											</button>
+										</div>
+									</div><!-- /.modal-content -->
+								</div><!-- /.modal -->
+							</div>
+							<div class="mainEdit"  data-toggle="modal" data-target="#lookModal" @click.capture="look(item,index)">查看</div>
+							<div class="mainEdit"  data-toggle="modal" data-target="#editModal" @click.capture="edit(item,index)"  style="color:blue;">修改</div>
 							<div class="modal fade" id="lookModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 								<div class="modal-dialog">
 									<div class="modal-content">
@@ -94,7 +122,7 @@
 									</div><!-- /.modal-content -->
 								</div><!-- /.modal -->
 							</div>
-							<div class="mainDelete" @click.capture="del(item,index)">删除</div>
+							
 						</td>
 					</tr>
 				</tbody>

@@ -39,6 +39,8 @@ var list_back = function (res) {
 
 				}
 				var list_back = function (res) {
+					toastr.success('添加成功！')
+
 					var list = that.items
 					var addList = list_options.data
 					list.push(addList)
@@ -76,6 +78,8 @@ var list_back = function (res) {
 							}
 						}
 						var list_back = function (res) {
+						toastr.success('修改成功！')
+
 							items[index] = item
 							that.items = items
 							that.$refs.gradeEdit[0].value=''

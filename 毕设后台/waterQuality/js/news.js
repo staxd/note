@@ -49,6 +49,8 @@ var list_back = function (res) {
 
 				}
 				var list_back = function (res) {
+					toastr.success('添加成功！')
+
 					var list = that.items
 					var addList = list_options.data
 					addList.gmtCreated = dateStr
