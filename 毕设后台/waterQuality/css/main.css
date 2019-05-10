@@ -160,7 +160,9 @@ html,body{
 	font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
 	overflow: auto;
 }
-
+.bannermanage-page{
+	height: 100%;
+}
 a{
 	text-decoration:none;
 }
@@ -242,13 +244,14 @@ a{
 	min-height:-moz-calc(100% - 60px);
 	min-height:-webkit-calc(100% - 60px);
 	min-height: calc(100% - 60px);
-	background:#41a0f5;
 	border-radius:2px;
 	position: relative;
 	bottom: 0;
 	overflow: auto;
 	float: left;
 	border: 1px solid #41a0f5;
+	border-top: none;
+	border-bottom: none;
 
 }
 
@@ -295,7 +298,7 @@ a{
 	background-image: url(../img/setUp1.png);
 }
 .actived{
-	background-color: #f4f9fc;
+	background-color: #41a0f58a;
 }
 
 .mainAdd{

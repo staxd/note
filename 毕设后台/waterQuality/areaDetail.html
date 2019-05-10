@@ -16,38 +16,6 @@
 <body >
 	<div class="bannermanage-page" id="content" >
 		<div class="topBar">
-			<button class="public_btn" data-toggle="modal" data-target="#addModal" >+ 添加水质区域</button>
-			<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-								&times;
-							</button>
-							<h4 class="modal-title" id="myModalLabel">
-								添加水域
-							</h4>
-						</div>
-						<div class="modal-body color_4a4a4a" style="min-height: 400px;display: flex;flex-direction: column;justify-content: space-between;width: 100%" >
-							<div id ="container" style="width: 100%;height: 300px;"> </div>
-							<div class="mgt_10"><span style="color:red">*</span>区域名：<input type="text" id="title" name="" ref='regionName'></div>
-							<div class="mgt_10"><span style="color:red">*</span>经度：<input type="text" id="title" name="" ref='longitude'></div>
-							<div class="mgt_10"><span style="color:red">*</span>纬度：<input type="text" id="title" name="" ref='latitude'></div>
-							<div class="mgt_10"><span style="color:red">*</span>水域等级：<input type="text" id="title" name="" ref='grade'></div>
-
-
-
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default marginR15" data-dismiss="modal">关闭
-							</button>
-							<button type="button" id="typeSub" class="public_sub_btn" data-dismiss="modal" @click.capture="add">
-								提交
-							</button>
-						</div>
-					</div><!-- /.modal-content -->
-				</div><!-- /.modal -->
-			</div>
 		</div>
 		<div id="contentBox" class="contentBox">
 			<table class="contentList">
@@ -71,8 +39,31 @@
 						<td class="no-banner1 text_center">{{item.regionName}}</td>
 						<td class="position-banner">{{item.grade}}</td>
 						<td class="operation">
-							<div class="mainAdd"  data-toggle="modal" data-target="#editModal" @click.capture="edit(item,index)">查看</div>
+							<div class="mainAdd"  data-toggle="modal" data-target="#lookModal" @click.capture="look(item,index)">查看</div>
 							<div class="mainEdit"  data-toggle="modal" data-target="#editModal" @click.capture="edit(item,index)">修改</div>
+							<div class="modal fade" id="lookModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+												&times;
+											</button>
+											<h4 class="modal-title" id="myModalLabel">
+												查看水域详情
+											</h4>
+										</div>
+										<div class="modal-body color_4a4a4a" style="display: flex;">
+											<div v-if='itemListLength==0'>暂无内容</div>
+											<div v-else>
+												<span>总氮：{{itemList.tp}}</span>
+												<span>总磷:{{itemList.tn}}</span>
+												<span>氨氮:{{itemList.nhN}}</span>
+												<span>化学需氧量:{{itemList.cod}}</span>
+											</div>
+										</div>
+									</div><!-- /.modal-content -->
+								</div><!-- /.modal -->
+							</div>
 							<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 								<div class="modal-dialog">
 									<div class="modal-content">
@@ -81,11 +72,17 @@
 												&times;
 											</button>
 											<h4 class="modal-title" id="myModalLabel">
-												修改水域
+												修改水域详情
 											</h4>
 										</div>
-										<div class="modal-body color_4a4a4a" style="display: flex;">
-											水域等级：<input type="text" id="title" name="" ref='gradeEdit'  style="width: 150px;left: 100px">
+										<div class="modal-body color_4a4a4a" style="display: flex;flex-direction: column;">
+											<div v-if='itemListLength==0'>暂无内容</div>
+											<div v-else>
+												<div>总氮：<input :value='itemList.tp' type="text" id="title" name="" ref='tpDetail'  style="width: 150px;left: 100px;position: inherit;top: -120px">（mg/L）</div>
+												<div>总磷:<input :value='itemList.tn' type="text" id="title" name="" ref='tnDetail'  style="width: 150px;left: 100px;position: inherit;top: -120px">（mg/L）</div>
+												<div>氨氮:<input :value='itemList.nhN' type="text" id="title" name="" ref='nhNDetail'  style="width: 150px;left: 100px;position: inherit;top: -120px">（mg/L）</div>
+												<div>化学需氧量:<input :value='itemList.cod' type="text" id="title" name="" ref='codDetail'  style="width: 150px;left: 100px;position: inherit;top: -120px">（mg/L）</div>
+											</div>
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-default marginR15" data-dismiss="modal">关闭

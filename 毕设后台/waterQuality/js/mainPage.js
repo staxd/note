@@ -25,7 +25,7 @@ var sideNav = new Vue({
 		{type:'新闻/公告',class:"orderManagement",selected:true,url:"news.html"},
 		{type:'水域管理',class:"manManagement",selected:false,url:"area.html"},
 		{type:'水域详情',class:"typeManagement",selected:false,url:"areaDetail.html"},
-		{type:'投诉管理',class:"moneyManagement",selected:false,url:"money.html"},
+		{type:'投诉管理',class:"moneyManagement",selected:false,url:"tousu.html"},
 		// {type:'员工管理',class:"staffManagement",selected:false,url:"staff.html"},
 		// {type:'培训管理',class:"trainManagement",selected:false,url:"train.html"}
 		  ]

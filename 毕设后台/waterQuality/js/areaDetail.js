@@ -19,7 +19,9 @@ var list_back = function (res) {
 			showTrue:true,
 			picked:'',
 			item:{},
-			index:0
+			index:0,
+			itemListLength:0,
+			itemList:{},
 
 		},
 		methods:{
@@ -50,11 +52,37 @@ var list_back = function (res) {
 					// console.log(list_options)
 					sendAjax(list_options, list_back)
 				},
+				look(item,index){
+					console.log(item,index)
+					var that = this
+					var list_options = {
+						type: 'GET',
+						url: 'quality/getWaterQuality',
+						data: {
+							regionId: item.id
+						}
+					}
+					var list_back = function (res) {
+						that.itemListLength = res.pageCount
+						that.itemList = res.items[0]
+					}
+					sendAjax(list_options, list_back)
+				},
 				edit(item,index){
 					console.log(item,index)
 					var that = this
-					that.item = item
-					that.index = index
+					var list_options = {
+						type: 'GET',
+						url: 'quality/getWaterQuality',
+						data: {
+							regionId: item.id
+						}
+					}
+					var list_back = function (res) {
+						that.itemListLength = res.pageCount
+						that.itemList = res.items[0]
+					}
+					sendAjax(list_options, list_back)
 
 				},
 				editSub(){
@@ -106,29 +134,5 @@ var list_back = function (res) {
 		}
 	})
 
-	init();
 }
 sendAjax(list_options, list_back)
-
-
-
-
-	//直接加载地图
- //初始化地图函数  自定义函数名init
- function init() {
-        //定义map变量 调用 qq.maps.Map() 构造函数   获取地图显示容器
-        var map = new qq.maps.Map(document.getElementById("container"), {
-            center: new qq.maps.LatLng(30.03,120.57),      // 地图的中心地理坐标。
-            zoom:12                                                 // 地图的中心地理坐标。
-        });
-        qq.maps.event.addListener(map, 'click', function(event) {
-        	alert('您点击的位置[纬度，经度]: [' + event.latLng.getLat() + ', ' +
-        		event.latLng.getLng() + ']');
-        });
-        var marker = new qq.maps.Marker({
-        	// position: center,
-        	draggable: true,
-        	map: map
-        });
-
-    }
