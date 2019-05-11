@@ -26,13 +26,15 @@ var list_back = function (res) {
 			{ type: '标题', class: "img-banner" },
 			{ type: '内容', class: "yaoqiu-banner" },
 			{ type: '创建时间', class: "time-banner" },
-			// { type: '操作', class: "operation-banner" }
+			{ type: '操作', class: "operation-banner" }
 			],
 			items: res.items,
 			showTrue: true,
 			content:'',
 			picked:'',
-			poster:''
+			poster:'',
+			item:{},
+			index:0
 		},
 		methods: {
 			add: function () {
@@ -70,7 +72,8 @@ var list_back = function (res) {
 					var that = this
 					var _form_data = new FormData();
 					_form_data.append('picType', 'vote');
-					_form_data.append('files', that.$refs.file.files[0]);
+					// console.log(that.$refs.file[0].files[0])
+					_form_data.append('files', that.$refs.file[0].files[0]);
 					var list_options = {
 						type: 'post',
 						baseURL:'https://www.sxscott.com/crazyBird/',
@@ -85,8 +88,56 @@ var list_back = function (res) {
 				},
 				look(item,index){
 					console.log(item,index)
+					this.item = item
 					this.content = item.content
-				}
+					this.title = item.title
+					this.poster = item.poster
+					this.index = item.index
+				},
+				editSub(){
+					var that = this
+					var itemList = that.item
+					var item = that.item
+					delete item["gmtCreated"]
+					item.content = that.$refs.content[0].value
+					item.title = that.$refs.title[0].value
+					item.poster = that.poster
+					itemList.content = that.$refs.content[0].value
+					itemList.title = that.$refs.title[0].value
+					itemList.poster = that.poster
+					var list_options = {
+						type: 'post',
+						url: 'quality/chageNews',
+						data: item
+					}
+					var list_back = function (res) {
+						toastr.success('修改成功！')
+						that.items[that.index] = itemList
+					}
+					sendAjax(list_options, list_back)
+				},
+				del: function (item, index) {
+					var that = this
+
+					var list_options = {
+						type: 'get',
+						url: 'quality/deleteNews',
+						data: {
+							newsId: item.id
+						}
+					}
+					var list_back = function (res) {
+						toastr.success('删除成功！')
+						var arr = []
+						for(let i in that.items){
+							if(i!=index){
+								arr.push(that.items[i])
+							}
+						}
+						that.items = arr
+					}
+					sendAjax(list_options, list_back)
+				},
 			}
 		})
 

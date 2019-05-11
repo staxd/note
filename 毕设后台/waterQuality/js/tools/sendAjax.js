@@ -36,11 +36,12 @@ function sendAjax(obj, callback) {
 		method: obj.type || 'get', // 默认值
 		//config
 		baseURL: obj.baseURL||'http://47.74.191.135:8080/quality/',
+		// baseURL: obj.baseURL||'http://192.168.155.2:8080/quality/',
 		headers: obj.headers||{ 'Content-Type': 'application/json',
 		"authorization":"ciRW3cOmi1JYY8niXxG7xxx3+b5no4/N5k3gZFChkEzIR+Cbv2rpqh2M8q7RuwTx"},
 	}
 	_defaults.method = _defaults.method.toUpperCase()
-	_defaults.method == 'GET' ? _defaults.params=obj.data || {} : _defaults.data = obj.data || {}
+	_defaults.method == 'GET' || _defaults.method == 'DELETE' ? _defaults.params=obj.data || {} : _defaults.data = obj.data || {}
 	const scallback = callback || function(data) {};
 	axios(_defaults).then(function(res){
 		console.log(res)
@@ -51,5 +52,5 @@ function sendAjax(obj, callback) {
 
       }
 
-	}).catch(function (e) {console.log(e)});;
+	}).catch(function (e) {console.log(e)});
 }

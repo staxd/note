@@ -69,6 +69,7 @@
 							</div>
 							<div class="mainEdit"  data-toggle="modal" data-target="#lookModal" @click.capture="look(item,index)">查看</div>
 							<div class="mainEdit"  data-toggle="modal" data-target="#editModal" @click.capture="edit(item,index)"  style="color:blue;">修改</div>
+							<div class="mainDelete"  @click.capture="del(item,index)">删除</div>
 							<div class="modal fade" id="lookModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 								<div class="modal-dialog">
 									<div class="modal-content">
@@ -106,10 +107,10 @@
 										<div class="modal-body color_4a4a4a" style="display: flex;flex-direction: column;">
 											<div v-if='itemListLength==0'>暂无内容</div>
 											<div v-else>
-												<div>总氮：<input :value='itemList.tp' type="text" id="title" name="" ref='tpDetail'  style="width: 150px;left: 100px;position: inherit;top: -120px">（mg/L）</div>
-												<div>总磷:<input :value='itemList.tn' type="text" id="title" name="" ref='tnDetail'  style="width: 150px;left: 100px;position: inherit;top: -120px">（mg/L）</div>
-												<div>氨氮:<input :value='itemList.nhN' type="text" id="title" name="" ref='nhNDetail'  style="width: 150px;left: 100px;position: inherit;top: -120px">（mg/L）</div>
-												<div>化学需氧量:<input :value='itemList.cod' type="text" id="title" name="" ref='codDetail'  style="width: 150px;left: 100px;position: inherit;top: -120px">（mg/L）</div>
+												<div>总氮：<input :value='itemList.tp' type="text" id="title" name="" ref='tpeditDetail'  style="width: 150px;left: 100px;position: inherit;top: -120px">（mg/L）</div>
+												<div>总磷:<input :value='itemList.tn' type="text" id="title" name="" ref='tneditDetail'  style="width: 150px;left: 100px;position: inherit;top: -120px">（mg/L）</div>
+												<div>氨氮:<input :value='itemList.nhN' type="text" id="title" name="" ref='nhNeditDetail'  style="width: 150px;left: 100px;position: inherit;top: -120px">（mg/L）</div>
+												<div>化学需氧量:<input :value='itemList.cod' type="text" id="title" name="" ref='codeditDetail'  style="width: 150px;left: 100px;position: inherit;top: -120px">（mg/L）</div>
 											</div>
 										</div>
 										<div class="modal-footer">

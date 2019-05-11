@@ -42,7 +42,10 @@
 						<td class="img-banner"><img v-if='item.complaintType!=""' :src="item.complaintType" style="width: 70px;height: 70px;"></td>
 						<td class="invalid-banner">{{item.complaintContent}}</td>
 						<td class="state-banner">{{item.gmtCreated}}</td>
-
+						<td class="operation">
+							<div v-if='item.chuli==false' class="mainEdit" @click.capture="del(item,index)">待处理</div>
+							<div v-else class="mainAdd">已处理</div>
+						</td>
 					</tr>
 				</tbody>
 			</table>

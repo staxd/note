@@ -45,6 +45,9 @@ var list_back = function (res) {
 				edit(item,index){
 					console.log(item,index)
 					var that = this
+					that.item = item
+					that.index = index
+					that.regionId = item.id
 					var list_options = {
 						type: 'GET',
 						url: 'quality/getWaterQuality',
@@ -64,27 +67,27 @@ var list_back = function (res) {
 					var item = that.item
 					var index = that.index
 					var items = that.items
-					if(that.$refs.gradeEdit!=''||that.$refs.gradeEdit!='0'){
-						item.grade = that.$refs.gradeEdit[0].value
-						console.log(that.$refs)
 						var list_options = {
 							type: 'post',
-							url: 'quality/changeRegionGrade',
+							url: 'quality/changeWaterQuality',
 							data: {
-								regionId:item.id,
-								grade:that.$refs.gradeEdit[0].value
+								id:item.id,
+								regionId:that.regionId,
+								tp:that.$refs.tpeditDetail[0].value,
+								tn:that.$refs.tneditDetail[0].value,
+								nhN:that.$refs.nhNeditDetail[0].value,
+								cod:that.$refs.codeditDetail[0].value,
+								tpCompany:'mg/L',
+								tnCompany:'mg/L',
+								nhNCompany:'mg/L',
+								codCompany:'mg/L',
 							}
 						}
 						var list_back = function (res) {
 					toastr.success('修改成功！')
-
-							items[index] = item
-							that.items = items
-							that.$refs.gradeEdit[0].value=''
 						}
 					// console.log(list_options)
 					sendAjax(list_options, list_back)
-				}
 			},
 			addGrade(item,index){
 				this.regionId = item.id
@@ -101,15 +104,14 @@ var list_back = function (res) {
 						nhN:that.$refs.nhNaddDetail[0].value,
 						cod:that.$refs.codaddDetail[0].value,
 						tn:that.$refs.tnaddDetail[0].value,
-
+						tpCompany:'mg/L',
+						tnCompany:'mg/L',
+						nhNCompany:'mg/L',
+						codCompany:'mg/L'
 					}
 				}
 				var list_back = function (res) {
 					toastr.success('添加成功！')
-					var list = that.items
-					var addList = list_options.data
-					list.push(addList)
-					that.items = list
 					//清空表单数据
 					that.$refs.tpaddDetail.value=''
 					that.$refs.nhNaddDetail.value=''
@@ -118,7 +120,34 @@ var list_back = function (res) {
 				}
 				console.log(list_options)
 				sendAjax(list_options, list_back)
-			}
+			},
+			del:function (item,index) {
+					var that = this
+					var list_options = {
+						type: 'GET',
+						url: 'quality/getWaterQuality',
+						data: {
+							regionId: item.id
+						}
+					}
+					var list_back = function (res) {
+						var list_options = {
+							type: 'delete',
+							url: 'quality/deleteWaterQuality',
+							data: {
+								qualityId: res.items[0].regionId
+							}
+						}
+						var list_back = function (a) {
+							toastr.success('删除成功！')
+						}
+						console.log(list_options)
+						sendAjax(list_options, list_back)
+					}
+					sendAjax(list_options, list_back)
+					
+
+			} 
 		}
 	})
 

@@ -86,9 +86,38 @@
 						</div>
 						
 						<td class="invalid-banner">{{item.gmtCreated}}</td>
-						<!-- <td class="operation">
-							<div class="mainDelete" @click.capture="doc(item,index)">删除</div>
-						</td> -->
+						<td class="operation">
+							<div class="mainEdit"  data-toggle="modal" data-target="#editModal" @click.capture="look(item,index)">修改</div>
+							<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+											&times;
+										</button>
+										<h4 class="modal-title" id="myModalLabel">
+											查看内容
+										</h4>
+									</div>
+									<div class="modal-body color_4a4a4a" style="min-height: 400px;display: flex;flex-direction: column;justify-content: space-between;">
+							<div>标题：<input style="width: 150px;height:30px;position: inherit;" type="text" id="title" name="" ref='title' :value = 'title'></div>
+							<div>内容：<textarea style="margin: 0px; width: 565px; height: 282px;" ref='content' :value = 'content'></textarea> </div>
+							<div style="width: 100px"><input style="width:68px;height:50px;border:none;position: inherit;margin: 0px" type="file" name="" ref='file' @change="doSomethingElse(this)" value="点击修改封面"></div>
+						</div>
+									<div class="modal-footer">
+											<button type="button" class="btn btn-default marginR15" data-dismiss="modal">关闭
+											</button>
+											<button type="button" id="typeSub" class="public_sub_btn" data-dismiss="modal" @click.capture="editSub">
+												提交
+											</button>
+										</div>
+								</div><!-- /.modal-content -->
+							</div><!-- /.modal -->
+						</div>
+
+
+							<div class="mainDelete" @click.capture="del(item,index)">删除</div>
+						</td>
 					</tr>
 				</tbody>
 			</table>
