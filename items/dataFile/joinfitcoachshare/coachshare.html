@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="renderer" content="webkit">
+    <title>教练详情</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="jquery.js"></script>
+    <script src="vue.js"></script>
+    <script src="sendAjax.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <div id="content" v-show='contentShow' style="display: none">
+    <div class="share_top">
+        <img class="share_top_logo" src="logo.png" alt="">
+        <a href='https://fir.im/g1hu'><img class="share_top_down" src="down.png" alt="??"></a>
+    </div>
+    <div class="share_top_box">
+    </div>
+
+        <div class="share_grad">
+            <img class="share_grad_logo" :src="headPhotoUrl" alt="">
+            <div class="share_grad_center">
+                <div class="share_grad_center_title">{{name}}</div>
+                <div class="share_grad_center_mark">
+                    <div v-for="i in queryMark">
+                        {{i}}
+                    </div>
+                </div>
+                <div class="share_grad_center_store">门店：{{storeName}}></div>
+            </div>
+        </div>
+        <div class="message">
+            <div class="message_box">
+                <div class="message_box_top">留言</div>
+                <div class="message_box_bottom">{{messageCount}}</div>
+            </div>
+            <div class="ul"></div>
+            <div class="message_box">
+                <div class="message_box_top">关注</div>
+                <div class="message_box_bottom">{{concernedNum}}</div>
+            </div>
+            <div class="ul"></div>
+            <div class="message_box">
+                <div class="message_box_top">粉丝</div>
+                <div class="message_box_bottom">{{fansNum}}</div>
+            </div>
+        </div>
+        <div class="message_bottom"></div>
+        <div class="nav">
+            <div v-for='(i,index) in queryNav'>
+                <div :style="i.style" @click.capture="nav(queryNav,index)">{{i.name}}</div>
+            </div>
+        </div>
+        <div class="message_bottom"></div>
+        <div class="content_box">
+            <div v-for='(i,index) in queryNav'>
+                <template v-if="index==0">
+                     <div class="content_box_info">
+                     <textarea class="info" v-if='i.isShow' name="" id="" cols="300" rows="100" :value='i.comment' readonly></textarea>
+                     </div>
+                </template>
+                <template v-else-if="index==1">
+                    <template  v-if='i.isShow'>
+                    <template v-if='i.programs'>
+                        <div class="class_box" v-for='(item,index) in i.programs'>
+                            <img class="class_box_img" :src="item.program.imageUrl" alt="">
+                            <div class="class_box_title">{{item.program.name}}</div>
+                            <div class="class_box_content">{{item.program.traineeCount}}人已参加</div>
+                            <div class="class_box_content">{{item.program.lastTime}}分钟</div>
+                        </div>
+                    </template>
+                    <template v-else>
+                        <div class="info_no" >暂无课程</div>
+                    </template>
+                    </template>
+                </template>
+                <template v-else>
+                    <div class="info_no" v-if='i.isShow'>{{i.comment}}</div>
+                </template>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="renderer" content="webkit">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+
+<META HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT">
+
+<META HTTP-EQUIV="expires" CONTENT="0">
+    <title>动态详情</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="jquery.js"></script>
+    <script src="handlebars.js"></script>
+    <script src="zoom.js"></script>
+    <!-- <script src="moment.min.js"></script> -->
+</head>
+
+
+<body>
+    <div class="share_top">
+        <img class="share_top_logo" src="logo.png" alt="">
+        <a href='https://fir.im/g1hu'><img class="share_top_down" src="down.png" alt="??"></a>
+    </div>
+    <div class="share_top_box">
+    </div>
+     <div class="page pinch-zoom-parent">
+        <div class="pinch-zoom">
+            <img id = "imgMax" src="" alt="">
+        </div>
+    </div>
+    <div id ="boX" class="back"></div>
+    <div id="box"><div>
+    <div id="info"></div>
+    
+  
+
+    <script id="info-template" type="text/x-handlebars-template">
+        
+        <div class="head">
+            <img src="{{authorHeadPhotoUrl}}" alt="" class="head_img">
+            <div class="wrap_head">
+                <p class="name_p">{{authorNickname}}</p>
+                <p class="time_p">{{createdTime}} {{address}}</p>
+            </div>
+        </div>
+
+        <p class="hint">{{topicDesc}}</p>
+
+        <div class="imgs">
+            
+        {{#each images}}
+
+            <div class="img_min"><div class="imgBox"><img src="{{imageUrl}}" alt="" class="img" ></div></div>
+             
+        {{/each}}
+        
+        </div>
+        <div class="praisedhint">
+            {{praisedPersonsNumber}}人点赞
+            {{#each praisedPersons}}
+            <img src="{{headPhotoUrl}}" alt="" class="praised_img">
+            {{/each}}
+        </div>
+        
+
+        {{#if_eq commentsnumber 0}}
+        {{else}}
+            <div class="commenthint">全部评论({{commentsnumber}})</div>
+        {{/if_eq}}
+
+        {{#each comments}}
+        <div class="tiezi">
+            <img src="{{authorHeadPhotoUrl}}" alt="" class="head_img">
+            <div class="wrap_head">
+                <p class="name_p">{{authorNickname}}</p>
+                <p class="time_p">{{createdTime}}</p>
+            </div>
+            <p class="content_p">{{content}}</p>
+        </div>
+        {{/each}}
+
+        
+        
+    </script>  
+
+</body>
+
+    <script src="index.js"></script>
+
+</html>

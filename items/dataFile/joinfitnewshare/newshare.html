@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="renderer" content="webkit">
+    <title>精选</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="jquery.js"></script>
+    <script src="handlebars.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <div class="share_top">
+        <img class="share_top_logo"
+            src="logo.png" alt="">
+        <a href='https://fir.im/g1hu'><img class="share_top_down"
+                src="down.png" alt="??"></a>
+    </div>
+    <div class="share_top_box">
+    </div>
+    <div id="info"></div>
+
+    <script id="info-template" type="text/x-handlebars-template">
+        <div class="content">
+            <h5>
+                {{title}}
+            </h5>
+            <p class="time">
+                {{createdTime}}
+            </p>
+        </div>
+        <div class="newcontent">{{{doc}}}</div>
+    </script>
+</body>
+
+</html>

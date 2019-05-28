@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="renderer" content="webkit">
+    <title>动作详情</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="jquery.js"></script>
+    <script src="vue.js"></script>
+    <script src="sendAjax.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <div id="content" v-show='contentShow' style="display: none">
+        <div class="share_top">
+            <img class="share_top_logo" src="logo.png" alt="">
+            <a href='https://fir.im/g1hu'><img class="share_top_down" src="down.png" alt="??"></a>
+        </div>
+        <div class="share_top_box">
+        </div>
+        <div class="share_grad">
+            <video id="video1" autoplay="autoplay" controls=true :src='videoUrl'>
+            </video>
+        </div>
+        <div class="content_title">
+            全身舒展
+        </div>
+        <div class="message_bottom"></div>
+        <div class="content_box">
+            <div class="content_box_title">动作步骤</div>
+            <div style="white-space:pre-wrap;font-size: 0.5973333333333334rem;">{{comment}}</div>
+        </div>
+        <div class="content_box">
+            <div class="content_box_title">呼吸要领</div>
+            <div style="white-space:pre-wrap;font-size: 0.5973333333333334rem;">{{breathEssential}}</div>
+        </div>
+        <div class="content_box">
+            <div class="content_box_title">感受</div>
+            <div style="white-space:pre-wrap;font-size: 0.5973333333333334rem;">{{exerciseFeel}}</div>
+            <img v-if='exerciseFeelUrl!=""' class="content_box_img" :src="exerciseFeelUrl" alt="">
+        </div>
+        <div class="content_box">
+            <div class="content_box_title">益处</div>
+            <div style="white-space:pre-wrap;font-size: 0.5973333333333334rem;">{{benefit}}</div>
+        </div>
+        <div class="content_box">
+            <div class="content_box_title">常见错误</div>
+            <div style="white-space:pre-wrap;font-size: 0.5973333333333334rem;">{{commonMistakes}}</div>
+        </div>
+        <div class="body_bottom"></div>
+    </div>
+
+</body>
+
+</html>
