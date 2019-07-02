@@ -49,8 +49,8 @@ var list_options = {
     type: 'get',
     url: 'trainers/queryById',
     data: {
-        userId,
-        trainerId,
+        userId:'10000',
+        trainerId:'10599',
         language: 1
     }
 }
@@ -103,8 +103,8 @@ list_back.before = function () {
         type: 'get',
         url: 'trainers/queryMark',
         data: {
-            userId,
-            trainerId
+            userId:10000,
+            trainerId:10599
         }
     }
     var list_back = {}
@@ -118,6 +118,22 @@ sendAjax(list_options, list_back)
 
 
 
-
-
+//js -->
+// var list_options = {
+// 	type: 'get',
+// 	url: 'sociality/queryArticleByTrainerId',
+// 	data: {
+//         trainerId:10599,
+//         language:1,
+//         pageNumber:1,
+//         pageSize:999
+// 	}
+// }
+// var list_back = {}
+// list_back.success = function (e) {
+// 	console.log(e)
+// }
+// list_back.before = function () {}
+// console.log(list_options)
+// sendAjax(list_options,list_back)
 

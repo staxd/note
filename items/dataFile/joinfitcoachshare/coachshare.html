@@ -26,8 +26,8 @@
             <img class="share_grad_logo" :src="headPhotoUrl" alt="">
             <div class="share_grad_center">
                 <div class="share_grad_center_title">{{name}}</div>
-                <div class="share_grad_center_mark">
-                    <div v-for="i in queryMark">
+                <div class="share_grad_center_mark" style="justify-content:flex-start">
+                    <div v-for="i in queryMark" style="margin-right: 5px;">
                         {{i}}
                     </div>
                 </div>
@@ -61,7 +61,7 @@
             <div v-for='(i,index) in queryNav'>
                 <template v-if="index==0">
                      <div class="content_box_info">
-                     <textarea class="info" v-if='i.isShow' name="" id="" cols="300" rows="100" :value='i.comment' readonly></textarea>
+                     <textarea class="info" style="border:0;" v-if='i.isShow' name="" id="" cols="300" rows="100" :value='i.comment' readonly></textarea>
                      </div>
                 </template>
                 <template v-else-if="index==1">
